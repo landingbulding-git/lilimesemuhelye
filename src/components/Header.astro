@@ -1,15 +1,17 @@
 ---
-import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+import MobileNav from './MobileNav';
+import { EXTERNAL_LINK_ATTRS, NAV_CTA, NAV_LINKS } from '../data/site';
 
 // NOTE: "Zseb-Menedék mesetár" points at the second page from the design export,
 // which has not been built yet.
 ---
 
+{/* `sticky` is a positioned element, so the mobile menu panel anchors to this bar. */}
 <header
   class="sticky top-0 z-50 border-b border-hairline bg-cream font-body font-light text-slate"
 >
   <div
-    class="mx-auto flex max-w-canvas flex-wrap items-center justify-between gap-x-6 gap-y-3 px-[4vw] py-[14px]"
+    class="mx-auto flex max-w-canvas items-center justify-between gap-6 px-[4vw] py-[14px]"
   >
     <a
       href="#"
@@ -18,29 +20,35 @@ import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
       Lili Meseműhelye
     </a>
 
+    {/* Desktop bar: plain markup, no JS. Hidden below the md breakpoint, where
+        MobileNav's hamburger takes over. */}
     <nav
-      class="flex flex-wrap items-center gap-x-[clamp(16px,2.4vw,34px)] gap-y-3"
+      class="hidden items-center gap-x-[clamp(16px,2.4vw,34px)] md:flex"
       aria-label="Fő navigáció"
     >
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="text-[16px] whitespace-nowrap text-slate no-underline transition-opacity duration-100 hover:text-slate hover:opacity-70"
+          >
+            {link.label}
+          </a>
+        ))
+      }
       <a
-        href="#csomagok"
-        class="text-[16px] whitespace-nowrap text-slate no-underline transition-opacity duration-100 hover:text-slate hover:opacity-70"
-      >
-        Csomagok
-      </a>
-      <a
-        href="#"
-        class="text-[16px] text-slate no-underline transition-opacity duration-100 hover:text-slate hover:opacity-70"
-      >
-        Zseb-Menedék mesetár
-      </a>
-      <a
-        href={BOOKING_URL}
+        href={NAV_CTA.href}
         {...EXTERNAL_LINK_ATTRS}
         class="btn-apricot px-[18px] py-[7px] text-[14px] font-semibold whitespace-nowrap"
       >
-        Kipróbálom Díjmentesen!
+        {NAV_CTA.label}
       </a>
     </nav>
+
+    {/* Wrapped so the island itself leaves the desktop flex row entirely — an
+        empty flex item would still consume a `gap` and skew justify-between. */}
+    <div class="md:hidden">
+      <MobileNav client:media="(max-width: 767.98px)" />
+    </div>
   </div>
 </header>
