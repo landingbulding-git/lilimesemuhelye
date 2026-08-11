@@ -1,5 +1,6 @@
 ---
-import ImagePlaceholder from './ImagePlaceholder.astro';
+import { Image } from 'astro:assets';
+import founderImage from '../assets/founder.webp';
 ---
 
 <section class="section bg-cream font-body font-light text-slate" aria-label="Alapító">
@@ -7,7 +8,19 @@ import ImagePlaceholder from './ImagePlaceholder.astro';
     class="mx-auto grid max-w-content items-center gap-[clamp(32px,4.5vw,72px)] [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]"
   >
     <div class="relative aspect-4/5 w-full bg-sage">
-      <ImagePlaceholder hint="Húzz ide egy portrét az alapítóról" />
+      {/* Source is 3:4 at 2320px wide; `cover` crops it to the 4:5 frame the design
+          specifies, and the explicit width caps the no-srcset fallback at 1080. */}
+      <Image
+        src={founderImage}
+        alt="Lili, a Lili Meseműhelye alapítója"
+        widths={[480, 720, 1080]}
+        sizes="(max-width: 768px) 92vw, 45vw"
+        width={1080}
+        height={1437}
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
     </div>
 
     <div class="flex flex-col gap-5">

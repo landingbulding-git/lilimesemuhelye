@@ -1,4 +1,6 @@
 ---
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+
 const assurances = [
   '100% Online & Ingyenes',
   'Semmilyen kötelezettséggel nem jár',
@@ -23,7 +25,8 @@ const assurances = [
 
     <div class="flex flex-col items-center gap-[18px]">
       <a
-        href="#"
+        href={BOOKING_URL}
+        {...EXTERNAL_LINK_ATTRS}
         class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
       >
         Szeretném kipróbálni a mesék ősi hatását díjmentesen

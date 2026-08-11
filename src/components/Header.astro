@@ -1,7 +1,8 @@
 ---
-// NOTE: CTAs intentionally have no destination yet (href="#"). Wire them to the
-// booking flow when it exists. The "Zseb-Menedék mesetár" item points at the
-// second page from the design export, which has not been built yet.
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+
+// NOTE: "Zseb-Menedék mesetár" points at the second page from the design export,
+// which has not been built yet.
 ---
 
 <header
@@ -34,7 +35,8 @@
         Zseb-Menedék mesetár
       </a>
       <a
-        href="#csomagok"
+        href={BOOKING_URL}
+        {...EXTERNAL_LINK_ATTRS}
         class="btn-apricot px-[18px] py-[7px] text-[14px] font-semibold whitespace-nowrap"
       >
         Kipróbálom Díjmentesen!

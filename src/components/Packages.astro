@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import PackageCard from './PackageCard.astro';
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 import sun from '../assets/illustration-sun.png';
 import sneaker from '../assets/illustration-sneaker.png';
 import sunglasses from '../assets/illustration-sunglasses.png';
@@ -77,7 +78,11 @@ const guarantees = [
         Nem kell most döntened:
         <strong>az első alkalom ingyenes és kockázatmentes.</strong>
       </p>
-      <a href="#" class="btn-apricot flex-none px-[28px] py-[13px] text-[16px] font-extrabold">
+      <a
+        href={BOOKING_URL}
+        {...EXTERNAL_LINK_ATTRS}
+        class="btn-apricot flex-none px-[28px] py-[13px] text-[16px] font-extrabold"
+      >
         Kipróbálom díjmentesen
       </a>
     </div>

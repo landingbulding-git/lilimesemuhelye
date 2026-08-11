@@ -38,18 +38,27 @@ src/
   crawlers and for users before hydration.
 - Fonts are **self-hosted** (`@fontsource`) — no render-blocking request to
   `fonts.googleapis.com`, and the woff2 files are fingerprinted and immutably cached.
-- Illustrations go through `astro:assets`: webp at 1x/2x, explicit `width`/`height`
-  to reserve layout (no CLS), `loading="lazy"`. ~860 kB of PNG → ~125 kB of webp.
+- Images go through `astro:assets` — webp, explicit `width`/`height` to reserve
+  layout (no CLS), lazy below the fold. The step and guarantee illustrations are
+  served at 1x/2x (~860 kB of PNG → ~125 kB); the hero and founder portraits get a
+  480/720/1080 `srcset` with `sizes`, so the hero drops from a 1.6 MB PNG to an
+  83–147 kB webp. The hero is the LCP element and is `loading="eager"` with
+  `fetchpriority="high"`.
 - One stylesheet, tokens emitted once as custom properties.
+
+## Links
+
+The four "try it free" CTAs — navbar, hero, the pricing banner and the closer —
+point at the Cal.com booking page and open in a new tab. The URL lives in
+`src/data/site.ts`; change it there and all four follow.
 
 ## Not done yet
 
-- **CTAs have no destination.** Every `href` is `#` by design until the booking
-  flow exists — see `Header.astro`, `Hero.astro`, `PackageCard.astro`,
-  `Packages.astro`, `FinalCta.astro`.
-- **Images are placeholders.** `ImagePlaceholder.astro` renders the art-direction
-  hint from each `<image-slot>` in the export. Replace it with `<Image />` from
-  `astro:assets` once the photography lands; the wrappers already own the aspect
-  ratio and fallback fill.
+- **The three "Ezt választom" package buttons** are still `#`. They need a
+  per-package destination (checkout, or a booking link carrying the package).
+- **The three value-prop images** are still `ImagePlaceholder.astro`, which renders
+  the art-direction hint from the matching `<image-slot>` in the export. Replace
+  with `<Image />` from `astro:assets` as the photography lands; the wrappers
+  already own the aspect ratio and fallback fill.
 - **"Zseb-Menedék mesetár"** in the nav points at `#`. That is the second page in
   the export (`Mesetar.dc.html`) and has not been built.

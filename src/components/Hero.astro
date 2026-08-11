@@ -1,5 +1,7 @@
 ---
-import ImagePlaceholder from './ImagePlaceholder.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.png';
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 
 const assurances = [
   '100% Online & Ingyenes',
@@ -40,7 +42,8 @@ const assurances = [
 
       <div class="flex flex-col items-start gap-[18px]">
         <a
-          href="#"
+          href={BOOKING_URL}
+          {...EXTERNAL_LINK_ATTRS}
           class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
         >
           Szeretném kipróbálni a mesék ősi hatását díjmentesen
@@ -64,8 +67,18 @@ const assurances = [
     <div
       class="relative aspect-4/5 max-h-[calc(100vh-clamp(48px,6vh,88px))] min-h-[300px] w-full bg-sage md:justify-self-end"
     >
-      <ImagePlaceholder
-        hint="Húzz ide egy meleg tónusú portrét vagy hangulatképet"
+      {/* Above the fold: eager + high priority so it is not discovered late.
+          The source is a 4:5 transparent cutout, so `cover` crops nothing and the
+          sage fill behind it shows through, exactly as in the design. */}
+      <Image
+        src={heroImage}
+        alt="Lili, a Lili Meseműhelye alapítója"
+        widths={[480, 720, 1080]}
+        sizes="(max-width: 768px) 92vw, 45vw"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
       />
     </div>
   </div>
