@@ -10,10 +10,12 @@ const assurances = [
 ];
 ---
 
-{/* No bottom padding, and the grid stretches to fill the section, so the cutout can
-    be grounded on the section's bottom edge without pushing everything else down. */}
+{/* No vertical padding and no minimum height: the image cell is the tallest thing
+    here, so it sets the section's height and its top and bottom edges ARE the
+    section's edges. Anything that forces the section taller (min-height, padding)
+    reappears as dead space above the content. */}
 <section
-  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(24px,3vh,44px)] pb-0 font-body font-light text-slate md:min-h-screen"
+  class="flex items-stretch bg-cream px-[4vw] py-0 font-body font-light text-slate"
   aria-label="Bemutatkozás"
 >
   <div
@@ -67,13 +69,12 @@ const assurances = [
     </div>
 
     {/* The cutout is transparent — no fill behind it, the page cream shows through.
-        `self-end` puts it flush with the section's bottom edge. */}
+        The cell keeps the source's 4:5 ratio and carries no height cap, so the image
+        fills it edge to edge with nothing letterboxed. */}
     <div
-      class="relative aspect-4/5 max-h-[calc((100vh-clamp(24px,3vh,44px))*0.8)] min-h-[240px] w-4/5 self-end justify-self-center md:justify-self-end"
+      class="relative aspect-4/5 w-4/5 justify-self-center md:justify-self-end"
     >
-      {/* Above the fold: eager + high priority so it is not discovered late.
-          `contain` never crops the cutout when the height cap narrows the box;
-          `object-bottom` keeps the figure standing on the bottom edge. */}
+      {/* Above the fold: eager + high priority so it is not discovered late. */}
       <Image
         src={heroImage}
         alt="Lili, a Lili Meseműhelye alapítója"
@@ -82,7 +83,7 @@ const assurances = [
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        class="absolute inset-0 h-full w-full object-contain object-bottom"
+        class="absolute inset-0 h-full w-full object-cover"
       />
     </div>
   </div>
