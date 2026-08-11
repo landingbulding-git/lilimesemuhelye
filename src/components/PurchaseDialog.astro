@@ -1,0 +1,133 @@
+---
+/*
+  Rendered once per page. Every `[data-purchase-trigger]` button on the page opens it.
+
+  Built on the native <dialog> element rather than a React island: `showModal()`
+  gives real focus trapping, Escape-to-close, an inert background and a ::backdrop
+  for free — all of which are easy to get subtly wrong by hand — and the content is
+  static, so a framework would buy nothing here.
+*/
+
+const legalLinkClass =
+  'text-slate underline underline-offset-2 hover:text-terracotta';
+
+// The legal pages open in a new tab so an in-progress purchase is not lost.
+const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
+
+const bankDetails = [
+  { label: 'Kedvezményezett neve', value: 'Török Lili' },
+  { label: 'Bankszámlaszám', value: '12600016-14007965-49004982' },
+  { label: 'Közlemény', value: 'Név + e-mail cím' },
+];
+---
+
+<dialog
+  id="purchase-dialog"
+  aria-labelledby="purchase-dialog-title"
+  class="m-auto max-h-[85dvh] w-[min(92vw,580px)] overflow-y-auto bg-cream p-0 text-slate backdrop:bg-slate/60"
+>
+  <div
+    class="relative flex flex-col gap-[clamp(16px,2.5vw,22px)] p-[clamp(24px,4.5vw,44px)] font-body text-[clamp(14px,1.05vw,16px)] leading-[1.6] font-light tracking-[0.16px]"
+  >
+    {/* method="dialog" closes the dialog natively, no script involved. */}
+    <form method="dialog" class="absolute top-[10px] right-[10px] m-0">
+      <button
+        type="submit"
+        aria-label="Bezárás"
+        class="flex h-10 w-10 cursor-pointer items-center justify-center border-0 bg-transparent text-slate transition-opacity duration-100 hover:opacity-60"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </form>
+
+    <p
+      id="purchase-dialog-title"
+      class="m-0 max-w-[38ch] pr-10 font-display text-[clamp(19px,1.8vw,24px)] leading-[1.3] font-normal text-pretty"
+    >
+      Az egykattintásos, azonnali online bankkártyás fizetés már fejlesztés alatt
+      áll, hogy a vásárlás a lehető leggyorsabb és legegyszerűbb legyen számodra.
+    </p>
+
+    <p class="m-0 text-pretty">
+      Addig is a választott csomagot közvetlen banki átutalással tudod megrendelni:
+    </p>
+
+    <ul
+      class="m-0 flex list-none flex-col gap-[10px] border-y border-hairline py-[clamp(14px,2vw,18px)] p-0"
+    >
+      {
+        bankDetails.map((detail) => (
+          <li class="flex flex-col gap-[2px] sm:flex-row sm:gap-2">
+            <span class="shrink-0 opacity-75">{detail.label}:</span>
+            <strong class="break-words">{detail.value}</strong>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="m-0 text-pretty">
+      Amint az összeg megérkezik, a csomagod automatikusan aktiválódik, a részletes
+      tájékoztatót és a belépési hozzáféréseket pedig azonnal küldöm e-mailben.
+    </p>
+
+    <p class="m-0">
+      Szeretettel,<br />
+      Lili
+    </p>
+
+    <p
+      class="m-0 border-t border-hairline pt-[clamp(14px,2vw,18px)] text-[13px] leading-[1.55] opacity-75 text-pretty"
+    >
+      A fizetéssel kijelentem, hogy elolvastam, megértettem és elfogadom az
+      <a href="/aszf" class={legalLinkClass} {...legalLinkAttrs}>
+        Általános Szerződési Feltételeket
+      </a>, az
+      <a href="/adatvedelem" class={legalLinkClass} {...legalLinkAttrs}>
+        Adatvédelmi Tájékoztatót
+      </a>, valamint a
+      <a href="/nyilatkozat" class={legalLinkClass} {...legalLinkAttrs}>
+        Felelősségkizáró és Egészségügyi Nyilatkozatot
+      </a>, és a bennük foglaltakat magamra nézve kötelező érvényűnek ismerem el.
+    </p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('purchase-dialog');
+
+  if (dialog instanceof HTMLDialogElement) {
+    const triggers = document.querySelectorAll('[data-purchase-trigger]');
+
+    for (const trigger of triggers) {
+      trigger.addEventListener('click', () => {
+        // showModal() makes the page inert but does not stop it scrolling.
+        document.body.style.overflow = 'hidden';
+        dialog.showModal();
+      });
+    }
+
+    // Only the backdrop reports the dialog itself as the target — the content sits
+    // in a padded child, so clicks inside it never match.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    // Fires for every close path: the button, Escape, and the backdrop.
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = '';
+    });
+  }
+</script>

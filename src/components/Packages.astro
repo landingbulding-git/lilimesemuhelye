@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import PackageCard from './PackageCard.astro';
+import PurchaseDialog from './PurchaseDialog.astro';
 import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 import sun from '../assets/illustration-sun.png';
 import sneaker from '../assets/illustration-sneaker.png';
@@ -134,4 +135,8 @@ const guarantees = [
       </div>
     </div>
   </div>
+
+  {/* Outside the flex column: a closed <dialog> is display:none, but keeping it
+      clear of the gap layout avoids any surprise if that ever changes. */}
+  <PurchaseDialog />
 </section>

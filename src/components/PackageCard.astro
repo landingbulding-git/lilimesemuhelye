@@ -85,13 +85,15 @@ const features = [
     }
   </ul>
 
-  <a
-    href="#"
+  {/* Opens the shared PurchaseDialog rendered once by Packages.astro. */}
+  <button
+    type="button"
+    data-purchase-trigger
     class:list={[
-      'mt-auto self-start px-[30px] py-[14px] text-[16px] font-extrabold',
+      'mt-auto cursor-pointer self-start px-[30px] py-[14px] text-[16px] font-extrabold',
       featured ? 'btn-apricot' : 'btn-outline',
     ]}
   >
     Ezt választom
-  </a>
+  </button>
 </div>
