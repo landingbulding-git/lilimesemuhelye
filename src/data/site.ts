@@ -21,3 +21,16 @@ export const NAV_CTA = {
   label: 'Kipróbálom Díjmentesen!',
   href: BOOKING_URL,
 } as const;
+
+/** Legal pages, linked from the footer. */
+export const LEGAL_LINKS = [
+  { label: 'ÁSZF', href: '/aszf' },
+  { label: 'Adatvédelmi Tájékoztató', href: '/adatvedelem' },
+  {
+    label: 'Felelősségkizáró és Egészségügyi Nyilatkozat',
+    href: '/nyilatkozat',
+  },
+] as const;
+
+/** Impresszum line, kept in step with the ÁSZF and the Adatvédelmi Tájékoztató. */
+export const BUSINESS_NAME = 'Török Viktória Lili E.V.';

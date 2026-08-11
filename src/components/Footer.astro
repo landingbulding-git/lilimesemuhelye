@@ -1,0 +1,50 @@
+---
+import { BUSINESS_NAME, LEGAL_LINKS } from '../data/site';
+
+// Baked in at build time — a rebuild rolls it over.
+const year = new Date().getFullYear();
+---
+
+{/* Cream on a hairline, mirroring the header, so it reads as a quiet legal strip
+    under the slate closing CTA rather than a second dark block. */}
+<footer
+  class="border-t border-hairline bg-cream px-[4vw] py-[clamp(32px,4vw,48px)] font-body font-light text-slate"
+>
+  <div class="mx-auto flex max-w-content flex-col gap-[clamp(20px,2.5vw,28px)]">
+    <div
+      class="flex flex-col items-center gap-[clamp(16px,2vw,24px)] text-center md:flex-row md:items-center md:justify-between md:text-left"
+    >
+      {/* Also the only way home from the legal pages, which carry no header. */}
+      <p class="m-0 font-display text-[clamp(17px,1.5vw,20px)] leading-[1.2]">
+        <a href="/" class="text-slate no-underline hover:text-terracotta">
+          Lili Meseműhelye
+        </a>
+      </p>
+
+      <nav aria-label="Jogi tudnivalók">
+        <ul
+          class="m-0 flex list-none flex-col items-center gap-x-[clamp(16px,2vw,28px)] gap-y-[10px] p-0 text-[15px] leading-[1.5] tracking-[0.16px] sm:flex-row sm:flex-wrap sm:justify-center"
+        >
+          {
+            LEGAL_LINKS.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-slate underline underline-offset-4 transition-opacity duration-100 hover:text-terracotta"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <p
+      class="m-0 text-center text-[13px] leading-[1.5] tracking-[0.16px] opacity-70 md:text-left"
+    >
+      © {year} {BUSINESS_NAME} — Minden jog fenntartva.
+    </p>
+  </div>
+</footer>
