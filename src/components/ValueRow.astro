@@ -8,25 +8,24 @@ interface Props {
   hint: string;
   /** Tailwind background class for the image fill. */
   fill: string;
-  /** Image first, then text — the zig-zag row. */
+  /** Image on the left on desktop — the zig-zag row. */
   reversed?: boolean;
 }
 
 const { heading, body, hint, fill, reversed = false } = Astro.props;
 ---
 
-<div
-  class="grid items-center gap-[clamp(28px,4vw,64px)] [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]"
->
-  {
-    reversed && (
-      <div class:list={['relative aspect-4/3 w-full', fill]}>
-        <ImagePlaceholder hint={hint} />
-      </div>
-    )
-  }
+{/*
+  The image is always first in the DOM so every row stacks image-then-text once the
+  grid collapses to one column. The desktop zig-zag is done with `order` instead of
+  DOM order, and the columns and the order flip at the same breakpoint.
+*/}
+<div class="grid grid-cols-1 items-center gap-[clamp(28px,4vw,64px)] md:grid-cols-2">
+  <div class:list={['relative aspect-4/3 w-full', fill, !reversed && 'md:order-2']}>
+    <ImagePlaceholder hint={hint} />
+  </div>
 
-  <div class="flex flex-col gap-4">
+  <div class:list={['flex flex-col gap-4', !reversed && 'md:order-1']}>
     <h3
       class="m-0 font-display text-[clamp(20px,1.85vw,26px)] leading-[1.26] font-normal text-pretty"
     >
@@ -37,12 +36,4 @@ const { heading, body, hint, fill, reversed = false } = Astro.props;
       set:html={body}
     />
   </div>
-
-  {
-    !reversed && (
-      <div class:list={['relative aspect-4/3 w-full', fill]}>
-        <ImagePlaceholder hint={hint} />
-      </div>
-    )
-  }
 </div>

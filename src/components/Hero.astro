@@ -69,7 +69,7 @@ const assurances = [
     {/* The cutout is transparent — no fill behind it, the page cream shows through.
         `self-end` puts it flush with the section's bottom edge. */}
     <div
-      class="relative aspect-4/5 max-h-[calc(100vh-clamp(24px,3vh,44px))] min-h-[300px] w-full self-end md:justify-self-end"
+      class="relative aspect-4/5 max-h-[calc((100vh-clamp(24px,3vh,44px))*0.8)] min-h-[240px] w-4/5 self-end justify-self-center md:justify-self-end"
     >
       {/* Above the fold: eager + high priority so it is not discovered late.
           `contain` never crops the cutout when the height cap narrows the box;
@@ -78,7 +78,7 @@ const assurances = [
         src={heroImage}
         alt="Lili, a Lili Meseműhelye alapítója"
         widths={[480, 720, 1080]}
-        sizes="(max-width: 768px) 92vw, 45vw"
+        sizes="(max-width: 768px) 74vw, 36vw"
         loading="eager"
         fetchpriority="high"
         decoding="async"
