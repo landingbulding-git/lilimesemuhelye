@@ -9,13 +9,9 @@ export const EXTERNAL_LINK_ATTRS = {
 
 /**
  * Navigation, shared by the desktop bar and the mobile menu so the two cannot
- * drift. "Zseb-Menedék mesetár" is the second page from the design export and has
- * no destination yet.
+ * drift.
  */
-export const NAV_LINKS = [
-  { label: 'Csomagok', href: '#csomagok' },
-  { label: 'Zseb-Menedék mesetár', href: '#' },
-] as const;
+export const NAV_LINKS = [{ label: 'Csomagok', href: '#csomagok' }] as const;
 
 export const NAV_CTA = {
   label: 'Kipróbálom Díjmentesen!',

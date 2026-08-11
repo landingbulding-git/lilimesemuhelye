@@ -11,13 +11,14 @@ interface Props {
 
 const { name, price, perSession, validity, featured = false } = Astro.props;
 
+// `soon` marks a feature that is part of the package but not live yet.
 const features = [
-  `Felhasználható <strong>${validity}</strong>`,
-  'Prémium rajzeszközök postázása',
-  'Korlátaln hozzáférés a „Belső munka” sablonokhoz',
-  'Korlátlan „SOS Zseb-Menedék” mesetár hozzáférés',
-  '24/7 hozzáférés a Menedék Csoporthoz',
-  'A program végén megkapod a saját mesédet az utazásodról',
+  { text: `Felhasználható <strong>${validity}</strong>` },
+  { text: 'Prémium rajzeszközök postázása' },
+  { text: 'Korlátlan hozzáférés a „Belső munka” sablonokhoz', soon: true },
+  { text: 'Korlátlan „SOS Zseb-Menedék” mesetár hozzáférés', soon: true },
+  { text: '24/7 hozzáférés a Menedék Csoporthoz' },
+  { text: 'A program végén megkapod a saját mesédet az utazásodról' },
 ];
 ---
 
@@ -71,7 +72,14 @@ const features = [
           >
             <path d="M20 6 9 17l-5-5" />
           </svg>
-          <span set:html={feature} />
+          <span>
+            <span set:html={feature.text} />
+            {feature.soon && (
+              <span class="ml-2 inline-block rounded-pill border border-slate/30 px-[10px] py-[2px] align-[1px] text-[12px] leading-[1.4] tracking-[0.32px] whitespace-nowrap opacity-70">
+                Hamarosan
+              </span>
+            )}
+          </span>
         </li>
       ))
     }
