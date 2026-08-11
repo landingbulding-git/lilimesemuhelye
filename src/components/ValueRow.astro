@@ -1,18 +1,23 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import ImagePlaceholder from './ImagePlaceholder.astro';
 
 interface Props {
   heading: string;
   /** Body copy; contains inline <strong> emphasis from the design. */
   body: string;
-  hint: string;
+  /** Placeholder hint if no image is provided. */
+  hint?: string;
+  /** Image source; if provided, renders the image instead of a placeholder. */
+  image?: ImageMetadata;
   /** Tailwind background class for the image fill. */
   fill: string;
   /** Image on the left on desktop — the zig-zag row. */
   reversed?: boolean;
 }
 
-const { heading, body, hint, fill, reversed = false } = Astro.props;
+const { heading, body, hint, image, fill, reversed = false } = Astro.props;
 ---
 
 {/*
@@ -22,7 +27,19 @@ const { heading, body, hint, fill, reversed = false } = Astro.props;
 */}
 <div class="grid grid-cols-1 items-center gap-[clamp(28px,4vw,64px)] md:grid-cols-2">
   <div class:list={['relative aspect-4/3 w-full', fill, !reversed && 'md:order-2']}>
-    <ImagePlaceholder hint={hint} />
+    {image ? (
+      <Image
+        src={image}
+        alt=""
+        widths={[480, 720, 1080]}
+        sizes="(max-width: 768px) 92vw, 45vw"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    ) : (
+      <ImagePlaceholder hint={hint || ''} />
+    )}
   </div>
 
   <div class:list={['flex flex-col gap-4', !reversed && 'md:order-1']}>
