@@ -1,0 +1,73 @@
+﻿Adatvédelmi Tájékoztató
+Lili Meseműhelye
+Tudom, milyen nehéz megnyílni és ismeretlenül segítséget kérni. Számomra az egyik legfontosabb érték a bizalom és a biztonságos, ítélkezésmentes tér megteremtése. Ez a biztonság nemcsak a mesefoglalkozásokra, hanem a személyes adataid védelmére is maximálisan kiterjed.
+Az alábbi Adatvédelmi Tájékoztatóban emberi nyelven, mégis a jogszabályoknak (különösen az Európai Unió Általános Adatvédelmi Rendeletének, a GDPR-nak) maradéktalanul megfelelve mutatom be, hogyan vigyázok az adataidra.
+1. Ki kezeli az adataidat? (Az Adatkezelő adatai)
+* Vállalkozó neve: Török Viktória Lili E.V.
+* Székhely: 6728 Szeged, Alkotmány utca 38.
+* Adószám: 49365520-1-26
+* Nyilvántartási szám: 59069373
+* E-mail cím: lili@lilimesemuhelye.hu
+* Telefonszám: +36 20 344 4132
+2. Milyen adatokat kezelek, miért és meddig?
+A szolgáltatásaim igénybevétele során különböző célokból kezelem az adataidat. Kizárólag azokat az információkat kérem be, amelyek a közös munkánkhoz vagy a jogszabályi kötelezettségeimhez feltétlenül szükségesek.
+A) Időpontfoglalás, kapcsolattartás és megrendelés
+Amikor jelentkezel az ingyenes próbaalkalomra vagy megrendelsz egy csomagot, az alapadatokra van szükségem a szerződéskötéshez és a kommunikációhoz.
+* Kezelt adatok: Név, e-mail cím, telefonszám, választott csomag adatai.
+* Jogalap: Szerződés teljesítése (GDPR 6. cikk (1) bek. b) pont).
+* Megőrzési idő: A csomag lejárta vagy a szerződés megszűnése után 5 évig (általános polgári jogi elévülés).
+B) Számlázás és fizetés
+A fizetős csomagok vásárlása esetén a jogszabályok köteleznek a számlakiállításra.
+* Kezelt adatok: Számlázási név, lakcím, adószám (ha van), tranzakciós adatok.
+* Jogalap: Jogi kötelezettség teljesítése (GDPR 6. cikk (1) bek. c) pont).
+* Megőrzési idő: A Számviteli törvény értelmében a számlákat kötelezően 8 évig meg kell őriznem.
+C) Prémium rajzeszközök postázása
+A fizetős csomagokhoz járó rajzeszközöket külső partnereken keresztül juttatom el hozzád.
+* Kezelt adatok: Szállítási név, szállítási cím/csomagpont, e-mail cím, telefonszám.
+* Jogalap: Szerződés teljesítése (GDPR 6. cikk (1) bek. b) pont).
+* Megőrzési idő: A csomag sikeres kézbesítését követő 5 év (garanciális és szerződéses igények miatt).
+D) Különleges (szenzitív) adatok, Rajzok és a „Saját Mese” felvételek
+A mesefoglalkozások során (amelyek nem minősülnek terápiának vagy egészségügyi ellátásnak) olyan beszélgetések alakulhatnak ki, és olyan rajzok készülhetnek, amelyek a mentális és lelki állapotodra utalhatnak. A legnagyobb odafigyeléssel kezelem ezeket. Külön igényelheted a találkozók rögzítését is a saját meséd megalkotásához.
+* Kezelt adatok: Az általad feltöltött/beküldött rajzok (Tally.so), a beszélgetés során megosztott személyes történetek, valamint – kizárólag a kifejezett, előzetes hozzájárulásod esetén – a Google Meet találkozóról készült hangfelvétel és annak leirata (tldv.io szoftverrel).
+* Jogalap: Az Ön kifejezett, önkéntes hozzájárulása (GDPR 9. cikk (2) bek. a) pont).
+* Megőrzési idő: Az adattakarékosság elve alapján az általad készített rajzokat, az elkészült meséket, valamint az esetleges hangfelvételeket és leiratokat a programod (csomagod) lezárását követő 60 napon belül véglegesen és visszaállíthatatlanul törlöm. Ezzel biztosítom, hogy ezek az intim információk soha ne lehessenek kompromittálhatók.
+E) Marketing és Hírlevél
+Szívesen küldök neked edukációs tartalmakat, értesítőket és új ajánlatokat, de csak akkor, ha ezt te is szeretnéd.
+* Kezelt adatok: Név, e-mail cím.
+* Jogalap: Az Ön hozzájárulása (GDPR 6. cikk (1) bek. a) pont).
+* Megőrzési idő: A hozzájárulásod visszavonásáig (leiratkozásig). Minden hírlevél alján egyetlen kattintással leiratkozhatsz.
+F) Videós és szöveges visszajelzések (Social Proof)
+A folyamat során vagy a végén (Videoask platformon) kérhetek tőled visszajelzést. Ezek a tapasztalatok másoknak is erőt adhatnak, de a megosztásuk mindig a te döntésed.
+* Kezelt adatok: Arcmás, hang, név, az értékelés szövege.
+* Jogalap: Az Ön kifejezett hozzájárulása, amelyet a videó rögzítésekor külön ad meg.
+* Megőrzési idő: A hozzájárulás visszavonásáig. Ha később úgy döntesz, hogy nem szeretnéd tovább nyilvánosan látni a videódat, azonnal eltávolítom a felületeimről.
+3. Sütik (Cookies) és Webes analitika
+A weboldalam a tökéletes működés és a látogatói élmény javítása érdekében sütiket (kisméretű adatfájlokat) használ.
+* Alapműködéshez szükséges sütik: Ezek nélkül az oldal (pl. az időpontfoglaló) nem tud működni. Ezekhez nem kell külön hozzájárulás.
+* Analitikai és Marketing sütik: Olyan rendszereket használok, mint a Google Analytics, a Facebook Pixel és a Microsoft Clarity, hogy megértsem, hogyan használják az oldalt a látogatók, és releváns hirdetéseket tudjak megjeleníteni. Ezek a sütik kizárólag akkor töltődnek be, ha a weboldalra érkezéskor a felugró ablakban (Cookie banner) erre kifejezett engedélyt adsz. Ezt a beállítást később bármikor módosíthatod.
+4. Kik láthatják az adataidat? (Adatfeldolgozók listája)
+Vállalkozásom egyszemélyes, így a személyes történeteidet és rajzaidat kizárólag én látom. A technikai és adminisztratív folyamatok biztosításához azonban megbízható külső szoftvereket és partnereket (adatfeldolgozókat) veszek igénybe:
+* Tárhely és infrastruktúra: Rackhost Zrt. (domain) és Vercel Inc. (weboldal motor)
+* Könyvelés és Számlázás: CZÉG-AI Kft. (8640 Fonyód, Béke utca 31.) és a Számlázz.hu (KBOSS.hu Kft.)
+* Fizetési szolgáltató: Stripe Inc.
+* Időpontfoglalás és Kommunikáció: Cal.com, Google Meet (Google Ireland Ltd.)
+* Űrlapok és Visszajelzések: Tally.so és Videoask.com
+* Logisztika: Harmadik fél webáruházak (eseti jelleggel, ahonnan a csomagot rendelem) és futárszolgálatok (pl. Packeta Hungary Kft., GLS General Logistics Systems Hungary Kft.)
+* Mesterséges Intelligencia / Leiratok: tldv.io (Kizárólag akkor rögzít és készít leiratot, ha te ezt a "Saját mese" elkészítéséhez előzetesen jóváhagytad.)
+* Hírlevél küldés: Sequenzy.com
+A partnerek az adatokat kizárólag az én utasításaim alapján, a jogszabályi keretek betartásával kezelhetik. Fenntartom a jogot, hogy a szolgáltatás minőségének javítása érdekében az adatfeldolgozók listáját frissítsem, amelyről a jelen tájékoztató módosításával értesítem a felhasználókat.
+5. Milyen jogaid vannak az adataiddal kapcsolatban?
+A GDPR értelmében téged széleskörű jogok illetnek meg a személyes adataid felett:
+1. Hozzáférési jog: Bármikor kérhetsz tájékoztatást arról, hogy milyen adatokat kezelek rólad.
+2. Helyesbítés joga: Kérheted a pontatlan adataid javítását.
+3. Törléshez való jog („az elfeledtetéshez való jog”): Kérheted az adataid törlését (kivéve, ha azt jogszabály, pl. a számlák esetében a Számviteli törvény kizárja).
+4. Adatkezelés korlátozásához való jog: Kérheted, hogy zároljam az adataidat bizonyos esetekben.
+5. Adathordozhatósághoz való jog: Jogod van az adataidat géppel olvasható formátumban megkapni, vagy egy másik szolgáltatónak továbbíttatni.
+6. Hozzájárulás visszavonásához és Tiltakozáshoz való jog: A marketing célú megkeresések, a felvételek vagy az értékelések felhasználása ellen bármikor tiltakozhatsz, és a korábban adott engedélyedet visszavonhatod a lili@lilimesemuhelye.hu e-mail címen.
+6. Panaszkezelés és Jogorvoslat
+Számomra a te nyugalmad a legfontosabb. Ha bármilyen kérdésed, kérésed vagy észrevételed van az adataid kezelésével kapcsolatban, kérlek, írj nekem a lili@lilimesemuhelye.hu címre, és soron kívül, barátságosan megoldjuk.
+Ha úgy érzed, hogy az adatkezelés során megsértettem a jogaidat, panasszal élhetsz a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):
+* Cím: 1055 Budapest, Falk Miksa utca 9-11.
+* E-mail: ugyfelszolgalat@naih.hu
+* Weboldal: www.naih.hu Valamint jogodban áll a lakóhelyed szerint illetékes törvényszékhez fordulni.
+A tájékoztató hatálybalépésének ideje: 2024. [Aktuális hónap, nap]. Kijelentem, hogy jelen adatvédelmi tájékoztatóban foglaltak a valóságnak és az aktuális európai uniós, valamint magyar jogszabályoknak megfelelnek.

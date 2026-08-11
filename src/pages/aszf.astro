@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Általános Szerződési Feltételek (ÁSZF) — Lili Meseműhelye';
+const description = 'Lili Meseműhelye általános szerződési feltételei és jogi nyilatkozata.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="bg-cream px-[4vw] py-[clamp(56px,7vw,104px)] font-body font-light text-slate">
+    <article class="mx-auto max-w-[900px]">
+      <h1 class="m-0 mb-[clamp(28px,4vw,44px)] font-display text-[clamp(32px,4vw,48px)] leading-[1.2] font-normal">
+        Általános Szerződési Feltételek (ÁSZF)
+      </h1>
+
+      <p class="mb-[clamp(20px,3vw,32px)] text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+        <strong>Lili Meseműhelye</strong>
+      </p>
+
+      <div class="mb-[clamp(24px,3.5vw,48px)] text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+        <p>
+          Üdvözöllek a Lili Meseműhelyében! Kérlek, figyelmesen olvasd el az alábbi Általános Szerződési Feltételeket (továbbiakban: ÁSZF), mert a weboldalon történő időpontfoglalással és a fizetős csomagok megrendelésével ezeket a feltételeket elfogadod, és köztünk egy jogilag kötelező érvényű szerződés jön létre.
+        </p>
+
+        <p>
+          Célom, hogy az ÁSZF ne egy érthetetlen jogi útvesztő legyen, hanem egy világos keretrendszer, amely mindkettőnk biztonságát szolgálja a közös munka során.
+        </p>
+      </div>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          1. Szolgáltató adatai (Impresszum)
+        </h2>
+        <ul class="m-0 list-none space-y-2 p-0 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Vállalkozó neve:</strong> Török Viktória Lili E.V. (továbbiakban: Szolgáltató)</li>
+          <li><strong>Székhely:</strong> 6728 Szeged, Alkotmány utca 38.</li>
+          <li><strong>Adószám:</strong> 49365520-1-26</li>
+          <li><strong>Nyilvántartási szám:</strong> 59069373</li>
+          <li><strong>Kapcsolattartási e-mail cím:</strong> lili@lilimesemuhelye.hu</li>
+          <li><strong>Telefonszám:</strong> +36 20 344 4132</li>
+        </ul>
+        <div class="mt-4">
+          <p class="m-0 mb-2 font-semibold">Tárhelyszolgáltatók és technikai partnerek:</p>
+          <ul class="m-0 list-none space-y-2 p-0 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+            <li><strong>Domain szolgáltató:</strong> Rackhost Zrt. (6722 Szeged, Tisza Lajos körút 41., info@rackhost.hu)</li>
+            <li><strong>Weboldal tárhely:</strong> Vercel Inc. (Amerikai Egyesült Államok)</li>
+            <li><strong>Időpontfoglaló rendszer:</strong> Cal.com</li>
+            <li><strong>Online találkozók felülete:</strong> Google Meet</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          2. A Szerződés tárgya
+        </h2>
+        <div class="space-y-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <p>
+            A Szolgáltató online mesefoglalkozásokat, ehhez kapcsolódó digitális tartalmakat (Zseb-Menedék mesetár, Belső munka sablonok, Menedék Csoport tagság), valamint a fizetős csomagok részeként fizikai termékeket (prémium rajzeszközök) értékesít (továbbiakban együttesen: Szolgáltatás) Fogyasztók (továbbiakban: Felhasználó) részére.
+          </p>
+          <p>
+            A Szolgáltatás nem minősül pszichoterápiának, sem egészségügyi szolgáltatásnak, ahogy azt a jelentkezéskor kötelezően elfogadott Felelősségkizáró és Egészségügyi Nyilatkozat is részletezi.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          3. Megrendelés és Fizetési feltételek
+        </h2>
+        <ol class="m-0 list-decimal space-y-3 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Ingyenes próbaalkalom:</strong> Az első mesefoglalkozás minden új Felhasználó számára teljesen ingyenes és kötelezettségmentes. Bankkártyaadatok megadása nem szükséges.</li>
+          <li><strong>Fizetős csomagok:</strong> A próbaalkalmat követően a Felhasználó dönthet úgy, hogy fizetős csomagot (3, 6 vagy 12 alkalmas csomag) vásárol.</li>
+          <li><strong>Fizetés módja:</strong> A csomagok díjának kiegyenlítése a weboldalon keresztül, biztonságos online bankkártyás fizetéssel (Stripe rendszerén keresztül) történik, egy összegben, előre. Részletfizetésre nincs lehetőség. Egyedi kérés esetén banki átutalás is biztosított, ehhez előzetes e-mailes egyeztetés szükséges.</li>
+          <li><strong>Számlázás:</strong> A Szolgáltató a sikeres fizetést követően elektronikus számlát állít ki, amelyet a Felhasználó által megadott e-mail címre továbbít. Az időpontfoglalásra a fizetős alkalmakra csak a sikeres díjrendezés után van lehetőség.</li>
+        </ol>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          4. A prémium rajzeszközök (Fizikai csomag) szállítása
+        </h2>
+        <ol class="m-0 list-decimal space-y-3 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li>A fizetős csomagok tartalmazzák a prémium rajzeszközök árát és azok postázási költségét is. A Felhasználót ezen felül semmilyen rejtett költség vagy szállítási díj nem terheli.</li>
+          <li>A csomagokat a Szolgáltató külső partner webshopokon keresztül rendeli meg és juttatja el a Felhasználóhoz, jellemzően csomagpontra (pl. Packeta) vagy házhozszállítással (pl. GLS, MPL).</li>
+          <li>A megrendelés a csomag díjának beérkezését követően azonnal rögzítésre kerül.</li>
+        </ol>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          5. Lemondási feltételek és az „Élet-kompatibilis" garancia
+        </h2>
+        <div class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <p>
+            Az online foglalkozások (Google Meet) időpontja a felek által a naptárban rögzített időpont. A Szolgáltató rugalmasan kezeli a mindennapok váratlan eseményeit:
+          </p>
+        </div>
+        <ol class="m-0 list-decimal space-y-3 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Díjmentes módosítás:</strong> A lefoglalt időpont a kezdés előtt legkésőbb 2 órával következmények nélkül lemondható vagy módosítható. Az alkalom ebben az esetben nem vész el.</li>
+          <li><strong>Késői lemondás és "No-show":</strong> Amennyiben a Felhasználó kevesebb, mint 2 órával a kezdés előtt mondja le az alkalmat, vagy előzetes jelzés nélkül nem jelenik meg a foglalkozáson (legfeljebb 15 perc várakozási idő után), az adott alkalom felhasználtnak minősül, az elveszik. A díj nem téríthető vissza, és az alkalom nem pótolható.</li>
+        </ol>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          6. Csomagok érvényességi ideje
+        </h2>
+        <div class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <p>
+            A megvásárolt csomagokhoz tartozó alkalmakat meghatározott időn belül fel kell használni:
+          </p>
+        </div>
+        <ul class="m-0 mb-4 list-disc space-y-2 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li>„Lélegzetvétel" csomag (3 alkalom): a vásárlástól számított 3 hónapig.</li>
+          <li>„Maszkok letétele" csomag (6 alkalom): a vásárlástól számított 6 hónapig.</li>
+          <li>„Menedék" csomag (12 alkalom): a vásárlástól számított 12 hónapig.</li>
+        </ul>
+        <p class="text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          Amennyiben a Felhasználó a saját érdekkörében felmerülő okok miatt (önhibájából) nem veszi igénybe az összes alkalmat a megadott időszakon belül, a fel nem használt alkalmak elvesznek. A csomag lejár, annak ellenértéke (vagy a maradék összeg) nem téríthető vissza.
+        </p>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          7. Elállási jog és az „Ítélkezésmentes menedék" garancia
+        </h2>
+        <ol class="m-0 list-decimal space-y-3 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li>
+            <strong>Törvényi elállási jog:</strong> A fogyasztót a 45/2014. (II. 26.) Korm. rendelet alapján 14 napos indokolás nélküli elállási jog illeti meg a szerződéskötéstől (vásárlástól) számítva. Mivel a Felhasználó a csomag megvásárlása után azonnal jogosulttá válik a digitális tartalmak (pl. Mesetár) elérésére és időpontfoglalásra, a megrendeléssel kifejezetten kéri és beleegyezik, hogy a Szolgáltató a teljesítést a 14 napos határidő lejárta előtt megkezdje.
+          </li>
+          <li>
+            <strong>A Szolgáltató saját, kiterjesztett garanciája:</strong> A Szolgáltató a törvényi előírásoknál kedvezőbb feltételeket biztosít. Ha a Felhasználó a fizetős csomag első teljes alkalmának végén úgy érzi, hogy nem a várt szolgáltatást kapta, a Szolgáltató kérdés nélkül, a teljes csomag árát visszatéríti.
+          </li>
+          <li>
+            <strong>Fizikai eszközök megtartása:</strong> Sikeres garanciaérvényesítés (visszatérítés) esetén a Felhasználó mentesül a már kipostázott prémium rajzeszközök visszaküldésének kötelezettsége alól, azokat díjmentesen megtarthatja.
+          </li>
+          <li>
+            <strong>Későbbi lemondás:</strong> Az első teljes fizetős alkalom sikeres lezárását követően, a csomag további részében a garanciális teljes pénzvisszafizetés (vagy időarányos visszatérítés) nem igényelhető.
+          </li>
+        </ol>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          8. Szerzői jogok
+        </h2>
+        <p class="text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A weboldalon található minden tartalom, a "Zseb-Menedék" mesetár anyagai, a "Belső munka" sablonok és a szolgáltatás keretében átadott minden egyedi módszertani leírás a Szolgáltató szellemi tulajdonát képezi. Ezek bármilyen formájú másolása, sokszorosítása, vagy harmadik fél számára történő továbbadása a Szolgáltató előzetes írásbeli engedélye nélkül szigorúan tilos és jogi eljárást von maga után.
+        </p>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          9. Panaszkezelés és Jogérvényesítés
+        </h2>
+        <div class="space-y-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <p>
+            Panasz esetén a Szolgáltató a békés, megegyezésre törekvő megoldás híve. A panaszokat a lili@lilimesemuhelye.hu e-mail címen lehet bejelenteni, melyre a Szolgáltató 30 napon belül érdemben válaszol.
+          </p>
+          <p>
+            Fogyasztói jogvita esetén a Felhasználó jogosult a lakóhelye szerint illetékes Békéltető Testülethez, vagy a Szolgáltató székhelye szerint illetékes Csongrád-Csanád Vármegyei Békéltető Testülethez fordulni, illetve igénybe veheti az Európai Unió online vitarendezési platformját (http://ec.europa.eu/odr). Bírósági jogérvényesítésre a hatályos magyar jogszabályok szerint van lehetőség.
+          </p>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
