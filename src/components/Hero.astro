@@ -10,10 +10,10 @@ const assurances = [
 ];
 ---
 
-{/* No bottom padding, and the content is bottom-aligned inside the section, so the
-    hero cutout is grounded on the section's bottom edge. */}
+{/* No bottom padding, and the grid stretches to fill the section, so the cutout can
+    be grounded on the section's bottom edge without pushing everything else down. */}
 <section
-  class="flex min-h-screen items-end bg-cream px-[4vw] pt-[clamp(24px,3vh,44px)] pb-0 font-body font-light text-slate"
+  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(24px,3vh,44px)] pb-0 font-body font-light text-slate md:min-h-screen"
   aria-label="Bemutatkozás"
 >
   <div
