@@ -1,0 +1,72 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+const assurances = [
+  '100% Online & Ingyenes',
+  'Semmilyen kötelezettséggel nem jár',
+  'Nincs kártyaadat megadás',
+];
+---
+
+<section
+  class="flex min-h-screen items-center bg-cream px-[4vw] py-[clamp(24px,3vh,44px)] font-body font-light text-slate"
+  aria-label="Bemutatkozás"
+>
+  <div
+    class="mx-auto grid w-full max-w-canvas items-center gap-[clamp(28px,4vw,72px)] md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+  >
+    <div
+      class="flex max-w-[700px] flex-col gap-[clamp(14px,2.2vh,24px)]"
+    >
+      <h1
+        class="m-0 font-display text-[clamp(22px,2.05vw,32px)] leading-[1.18] font-normal tracking-[-0.01em] text-pretty"
+      >
+        Tedd le a láthatatlan terheket és pihenj meg egy biztonságos közegben,
+        miközben a mesék ősi iránytűként vezetnek egy olyan élet felé, ahol
+        bűntudat nélkül lehetsz önmagad.
+      </h1>
+
+      <p
+        class="m-0 max-w-[62ch] text-[clamp(13px,0.95vw,16px)] leading-[1.55] tracking-[0.16px] text-pretty"
+      >
+        A mesék ősi szimbólumai neked is segíthetnek feloldani az elakadásaidat
+        <strong>saját otthonod kényelméből</strong>. Célom, hogy tiszta empátiával
+        és közös jelenléttel kísérjelek végig a belső utazásodon, mindezt egy
+        <strong>ítélkezésmentes, biztonságos közegben</strong>. A mesefoglalkozások
+        során <strong>nem kapsz diagnózist, nincsenek elvárások</strong>, helyette
+        „énidőt” teremtünk számodra, hogy újra szeretettel kapcsolódhass saját
+        magaddal.
+      </p>
+
+      <div class="flex flex-col items-start gap-[18px]">
+        <a
+          href="#"
+          class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+        >
+          Szeretném kipróbálni a mesék ősi hatását díjmentesen
+        </a>
+
+        <ul
+          class="m-0 flex list-none flex-wrap gap-x-[22px] gap-y-[10px] p-0 text-[14px] leading-[1.4] tracking-[0.16px] opacity-85"
+        >
+          {
+            assurances.map((item) => (
+              <li class="flex items-center gap-[9px]">
+                <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="relative aspect-4/5 max-h-[calc(100vh-clamp(48px,6vh,88px))] min-h-[300px] w-full bg-sage md:justify-self-end"
+    >
+      <ImagePlaceholder
+        hint="Húzz ide egy meleg tónusú portrét vagy hangulatképet"
+      />
+    </div>
+  </div>
+</section>

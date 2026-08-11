@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens — lifted verbatim from the "Mend counselling" design system that
+  ships with the Claude Design export (_ds/.../tokens/*.css). Exposed through
+  Tailwind's @theme so every value is reachable as a utility (bg-cream, font-display,
+  border-hairline, …) and emitted once as a CSS custom property.
+*/
+@theme {
+  /* ---- Palette ---- */
+  --color-cream: #ecead9; /* page background */
+  --color-slate: #50565e; /* body + heading text */
+  --color-apricot: #d8ab7b; /* accent — buttons, bright sections */
+  --color-sage: #a1b0aa; /* light accent — alternating sections */
+  --color-terracotta: #cf6b59; /* dark accent, used sparingly */
+  --color-ink: #000000; /* true black, only on apricot surfaces */
+
+  /* Hairlines and quiet fills */
+  --color-hairline: rgba(80, 86, 94, 0.25);
+  --color-hairline-soft: rgba(80, 86, 94, 0.2);
+
+  /* ---- Type ---- */
+  /* P22 Mackinac Pro is the licensed display face; it wins automatically when a
+     Typekit copy is present. Source Serif 4 is the self-hosted stand-in. */
+  --font-display:
+    'p22-mackinac-pro', 'Source Serif 4 Variable', 'Source Serif 4', Georgia,
+    'Times New Roman', serif;
+  --font-body: 'Poppins', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  /* ---- Shape ---- */
+  --radius-pill: 300px;
+
+  /* ---- Layout ---- */
+  --spacing-canvas: 1500px; /* full page canvas */
+  --spacing-content: 1200px; /* max text measure */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-slate);
+    font-family: var(--font-body);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--color-slate);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--color-terracotta);
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  /* Motion is near-absent by design; respect the OS setting anyway. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/*
+  Repeated design primitives. Declared with @utility (not @layer components) so they
+  compose with Tailwind variants and stay tree-shakeable.
+*/
+
+/* Every button on the site: pill, 3px border, display face, .32px tracking. */
+@utility btn {
+  display: inline-block;
+  border-radius: var(--radius-pill);
+  border-width: 3px;
+  border-style: solid;
+  font-family: var(--font-display);
+  letter-spacing: 0.32px;
+  text-decoration: none;
+  transition: opacity 0.1s ease;
+}
+
+@utility btn-apricot {
+  @apply btn;
+  border-color: var(--color-apricot);
+  background-color: var(--color-apricot);
+  color: var(--color-ink);
+
+  &:hover {
+    color: var(--color-ink);
+    opacity: 0.82;
+  }
+}
+
+@utility btn-outline {
+  @apply btn;
+  border-color: var(--color-slate);
+  background-color: transparent;
+  color: var(--color-slate);
+
+  &:hover {
+    color: var(--color-slate);
+    opacity: 0.75;
+  }
+}
+
+/* Shared section rhythm: 4vw page padding, fluid vertical padding, and enough
+   scroll-margin to clear the sticky header when jumping to an anchor. */
+@utility section {
+  padding-inline: 4vw;
+  padding-block: clamp(56px, 7vw, 104px);
+  scroll-margin-top: 76px;
+}

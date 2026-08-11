@@ -1,0 +1,30 @@
+---
+/*
+  Stand-in for the Claude Design <image-slot> elements. The real photography is not
+  in yet, so this renders the art-direction hint the design carried on each slot.
+  Swap the whole component out for <Image /> from astro:assets once the files land —
+  the surrounding wrapper already owns the aspect ratio and the fallback fill.
+*/
+interface Props {
+  hint: string;
+  class?: string;
+}
+
+const { hint, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'absolute inset-0 flex items-center justify-center p-6 text-center',
+    className,
+  ]}
+  role="img"
+  aria-label={hint}
+>
+  <span
+    class="max-w-[34ch] font-body text-[13px] leading-[1.5] font-light tracking-[0.16px] text-slate/70"
+    aria-hidden="true"
+  >
+    {hint}
+  </span>
+</div>

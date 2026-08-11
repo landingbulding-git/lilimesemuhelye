@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import PackageCard from './PackageCard.astro';
+import sun from '../assets/illustration-sun.png';
+import sneaker from '../assets/illustration-sneaker.png';
+import sunglasses from '../assets/illustration-sunglasses.png';
+
+const packages = [
+  {
+    name: '„Lélegzetvétel” csomag — 3 alkalom',
+    price: '39.000 Ft',
+    perSession: '13.000 Ft / alkalom',
+    validity: '3 hónapig',
+    featured: false,
+  },
+  {
+    name: '„Maszkok letétele” csomag — 6 alkalom',
+    price: '75.000 Ft',
+    perSession: '12.500 Ft / alkalom',
+    validity: '6 hónapig',
+    featured: true,
+  },
+  {
+    name: '„Menedék” csomag — 12 alkalom',
+    price: '144.000 Ft',
+    perSession: '12.000 Ft / alkalom',
+    validity: '12 hónapig',
+    featured: false,
+  },
+];
+
+const guarantees = [
+  {
+    src: sun,
+    heading: '„Ítélkezésmentes menedék” garancia',
+    body: 'Ha a fizetős csomag első teljes alkalmának végén úgy érzed, hogy nem azt a biztonságos, ítélkezésmentes teret kaptad, amire számítottál, <strong>a teljes csomag árát visszakapod</strong>&nbsp;kérdések nélkül.',
+  },
+  {
+    src: sneaker,
+    heading: '„Élet-kompatibilis” garancia',
+    body: 'A mindennapjaid kiszámíthatatlanok, ehhez igazodunk. Ha megbetegszik a gyermeked, megbetegszel vagy bármi közbejön, akkor, <strong>még 2 órával a kezdés előtt is</strong> kérhetsz új időpontot következmények nélkül.',
+  },
+  {
+    src: sunglasses,
+    heading: '„Sosem maradsz egyedül” garancia',
+    body: 'Ha nehéz téma vagy fájdalmas érzés jön fel a foglalkozáson, addig nem bontjuk a vonalat (akkor sem, ha túllépjük az időkeretet), amíg újra nyugodtabb pontra nem érsz.',
+  },
+];
+---
+
+<section
+  id="csomagok"
+  class="section bg-apricot font-body font-light text-ink"
+  aria-label="Csomagok"
+>
+  <div class="mx-auto flex max-w-content flex-col gap-[clamp(32px,4vw,56px)]">
+    <div class="flex flex-col items-center gap-[14px] text-center">
+      <h2
+        class="m-0 max-w-[32ch] font-display text-[clamp(26px,2.9vw,40px)] leading-[1.16] font-normal text-pretty"
+      >
+        Válaszd ki, milyen mélyre szeretnél menni.
+      </h2>
+    </div>
+
+    <div
+      class="grid items-stretch gap-[clamp(20px,2.4vw,32px)] [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]"
+    >
+      {packages.map((pkg) => <PackageCard {...pkg} />)}
+    </div>
+
+    <div
+      class="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 bg-slate px-[clamp(26px,3vw,44px)] py-[clamp(22px,2.4vw,32px)] text-cream"
+    >
+      <p
+        class="m-0 max-w-[58ch] text-[clamp(15px,1.15vw,18px)] leading-[1.5] tracking-[0.16px] text-pretty"
+      >
+        Nem kell most döntened:
+        <strong>az első alkalom ingyenes és kockázatmentes.</strong>
+      </p>
+      <a href="#" class="btn-apricot flex-none px-[28px] py-[13px] text-[16px] font-extrabold">
+        Kipróbálom díjmentesen
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-[clamp(20px,2.4vw,32px)]">
+      <h3
+        class="m-0 text-center font-display text-[clamp(20px,1.9vw,26px)] leading-[1.2] font-normal opacity-90"
+      >
+        A bizalmadat nem csak kiérdemelni szeretném, hanem hosszú távon is
+        fenntartani.
+      </h3>
+      <p
+        class="mx-auto mt-[-8px] mb-0 max-w-[88ch] text-center text-[clamp(15px,1.1vw,17px)] leading-[1.6] tracking-[0.16px] text-pretty"
+      >
+        Tudom, milyen nehéz ismeretlenül segítséget kérni. Számomra az a
+        legfontosabb, hogy a mesézéseket az első perctől kezdve
+        <strong>valóban biztonságosnak érezd</strong>, és ne egy újabb stresszforrás
+        legyen az életedben.
+      </p>
+
+      <div
+        class="mx-auto flex w-full max-w-[900px] flex-col gap-[clamp(24px,3vw,40px)]"
+      >
+        {
+          guarantees.map((item) => (
+            <div class="flex items-center gap-[clamp(20px,2.5vw,36px)] text-left">
+              <Image
+                src={item.src}
+                alt=""
+                width={140}
+                height={140}
+                densities={[1, 2]}
+                loading="lazy"
+                decoding="async"
+                class="block h-[clamp(112px,10vw,140px)] w-[clamp(112px,10vw,140px)] flex-none object-contain"
+              />
+              <div class="flex flex-col gap-[10px]">
+                <h4 class="m-0 font-display text-[clamp(17px,1.45vw,21px)] leading-[1.26] font-normal text-pretty">
+                  {item.heading}
+                </h4>
+                <p
+                  class="m-0 max-w-[70ch] text-[clamp(14px,1vw,15.5px)] leading-[1.6] tracking-[0.16px] text-pretty"
+                  set:html={item.body}
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

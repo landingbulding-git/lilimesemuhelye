@@ -1,0 +1,46 @@
+---
+const assurances = [
+  '100% Online & Ingyenes',
+  'Semmilyen kötelezettséggel nem jár',
+  'Nincs kártyaadat megadás',
+];
+---
+
+<section
+  id="jelentkezes"
+  class="scroll-mt-[76px] bg-slate px-[4vw] py-[clamp(64px,8vw,120px)] font-body font-light text-cream"
+  aria-label="Záró CTA"
+>
+  <div
+    class="mx-auto flex max-w-[900px] flex-col items-center gap-[clamp(24px,3vw,36px)] text-center"
+  >
+    <h2
+      class="m-0 max-w-[26ch] font-display text-[clamp(28px,3.2vw,44px)] leading-[1.14] font-normal text-pretty"
+    >
+      Tapasztald meg a mesézés élményét kockázatok nélkül, hogy szabadon és nyomás
+      nékül dönthess.
+    </h2>
+
+    <div class="flex flex-col items-center gap-[18px]">
+      <a
+        href="#"
+        class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+      >
+        Szeretném kipróbálni a mesék ősi hatását díjmentesen
+      </a>
+
+      <ul
+        class="m-0 flex list-none flex-wrap justify-center gap-x-[22px] gap-y-[10px] p-0 text-[14px] leading-[1.4] tracking-[0.16px] opacity-85"
+      >
+        {
+          assurances.map((item) => (
+            <li class="flex items-center gap-[9px]">
+              <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

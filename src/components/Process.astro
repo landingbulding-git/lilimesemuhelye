@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import calendar from '../assets/illustration-calendar.png';
+import hearts from '../assets/illustration-hearts.png';
+import compass from '../assets/illustration-compass.png';
+
+// Widths/heights are the intrinsic display sizes from the design; astro:assets
+// emits an optimised webp at 2x for these and reserves the box to avoid CLS.
+const steps = [
+  {
+    src: calendar,
+    width: 146,
+    height: 134,
+    heading: 'Foglalj egy ingyenes alkalmat.',
+    body: 'Csak válassz egy időpontot a naptárból, <strong>kötelezettségek nélkül</strong>.',
+  },
+  {
+    src: hearts,
+    width: 140,
+    height: 131,
+    heading: 'Lépj be a meetingbe, és éld át a mesézés élményét.',
+    body: 'Utána te magad döntesz a folytatásról <strong>— nyomás nélkül.</strong>',
+  },
+  {
+    src: compass,
+    width: 128,
+    height: 124,
+    heading: 'Ha tetszett: válaszd ki, hány alkalmat szeretnél.',
+    body: 'Ezt követően elpostázom a szükséges <strong>prémium eszközöket</strong>, és <strong>hozzáférést kapsz a bónuszokhoz is.</strong>',
+  },
+];
+---
+
+<section
+  id="folyamat"
+  class="section bg-sage font-body font-light text-slate"
+  aria-label="Folyamat"
+>
+  <div
+    class="mx-auto flex max-w-content flex-col items-center gap-[clamp(40px,5vw,72px)]"
+  >
+    <h2
+      class="m-0 max-w-[20ch] text-center font-display text-[clamp(28px,3.2vw,44px)] leading-[1.14] font-normal text-pretty"
+    >
+      Tedd le a maszkokat 3 egyszerű lépésben.
+    </h2>
+
+    <ol
+      class="m-0 grid w-full list-none gap-[clamp(32px,4vw,64px)] p-0 [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]"
+    >
+      {
+        steps.map((step) => (
+          <li class="flex flex-col items-center gap-4 text-center">
+            <Image
+              src={step.src}
+              alt=""
+              width={step.width}
+              height={step.height}
+              densities={[1, 2]}
+              loading="lazy"
+              decoding="async"
+              class="block"
+            />
+            <h3 class="m-0 font-display text-[clamp(19px,1.7vw,24px)] leading-[1.26] font-normal text-pretty">
+              {step.heading}
+            </h3>
+            <p
+              class="m-0 max-w-[34ch] text-[clamp(14px,1vw,16px)] leading-[1.6] tracking-[0.16px] text-pretty"
+              set:html={step.body}
+            />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

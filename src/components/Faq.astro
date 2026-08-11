@@ -1,0 +1,35 @@
+---
+import FaqAccordion from './FaqAccordion';
+import { faqGroups } from '../data/faq';
+
+// FAQPage structured data, built from the same source as the visible accordion so
+// the two can never drift.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.join(' ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' '),
+      },
+    })),
+  ),
+};
+---
+
+<section id="gyik" class="section bg-cream font-body font-light text-slate" aria-label="GYIK">
+  <div class="mx-auto flex max-w-[900px] flex-col gap-[clamp(28px,3.5vw,48px)]">
+    <h2
+      class="m-0 mx-auto max-w-[40ch] text-center font-display text-[clamp(26px,2.9vw,40px)] leading-[1.16] font-normal text-pretty"
+    >
+      Lehet, hogy ezek a kérdések benned is felmerültek már.
+    </h2>
+
+    <FaqAccordion groups={faqGroups} client:visible />
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />

@@ -1,0 +1,48 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+interface Props {
+  heading: string;
+  /** Body copy; contains inline <strong> emphasis from the design. */
+  body: string;
+  hint: string;
+  /** Tailwind background class for the image fill. */
+  fill: string;
+  /** Image first, then text — the zig-zag row. */
+  reversed?: boolean;
+}
+
+const { heading, body, hint, fill, reversed = false } = Astro.props;
+---
+
+<div
+  class="grid items-center gap-[clamp(28px,4vw,64px)] [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]"
+>
+  {
+    reversed && (
+      <div class:list={['relative aspect-4/3 w-full', fill]}>
+        <ImagePlaceholder hint={hint} />
+      </div>
+    )
+  }
+
+  <div class="flex flex-col gap-4">
+    <h3
+      class="m-0 font-display text-[clamp(20px,1.85vw,26px)] leading-[1.26] font-normal text-pretty"
+    >
+      {heading}
+    </h3>
+    <p
+      class="m-0 max-w-[46ch] text-[clamp(15px,1.1vw,17px)] leading-[1.6] tracking-[0.16px] text-pretty"
+      set:html={body}
+    />
+  </div>
+
+  {
+    !reversed && (
+      <div class:list={['relative aspect-4/3 w-full', fill]}>
+        <ImagePlaceholder hint={hint} />
+      </div>
+    )
+  }
+</div>

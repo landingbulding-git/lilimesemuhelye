@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Struggle from '../components/Struggle.astro';
+import ValueProps from '../components/ValueProps.astro';
+import Process from '../components/Process.astro';
+import Packages from '../components/Packages.astro';
+import Founder from '../components/Founder.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+
+const title = 'Lili Meseműhelye — Online mesefoglalkozás felnőtteknek';
+const description =
+  'Biztonságos, ítélkezésmentes online tér, ahol a mesék ősi szimbólumai segítenek feloldani az elakadásaidat. Az első alkalom díjmentes és kötelezettségmentes.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main>
+    <Hero />
+    <Struggle />
+    <ValueProps />
+    <Process />
+    <Packages />
+    <Founder />
+    <Faq />
+    <FinalCta />
+  </main>
+</BaseLayout>

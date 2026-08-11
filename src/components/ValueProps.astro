@@ -1,0 +1,41 @@
+---
+import ValueRow from './ValueRow.astro';
+
+const rows = [
+  {
+    heading:
+      'Lépj be egy olyan egyenrangú térbe, ahol nem kell úgy tenned, mintha minden rendben lenne.',
+    body: 'Itt megpihenhetsz a <strong>„mindig erősnek kell lenni” kényszere nélkül</strong>. A mesék ősi szimbólumrendszere kíméletesen, mégis hatékonyan kísér végig az önismereti utadon, hogy visszanyerd a belső békédet.',
+    hint: 'Csendes, meleg tónusú kép — megpihenés',
+    fill: 'bg-sage',
+    reversed: false,
+  },
+  {
+    heading: 'Utat engedünk az őszinte érzéseknek és kapcsolódásnak.',
+    body: 'A szimbólumok segíthetnek felszínre hozni azokat a belső elakadásokat, amiket a mindennapi rohanásban elfojtottál. Dogmamentes és emberi foglalkozás, hogy a teljesítménykényszer helyett a <strong>feltétel nélküli elfogadást</strong> tapasztald meg.',
+    hint: 'Kép — őszinte érzések, jelenlét',
+    fill: 'bg-apricot',
+    reversed: true,
+  },
+  {
+    heading: 'Nem diagnosztizálunk, nincs „szakértő és páciens” felállás.',
+    body: 'Két ember kapcsolódik, ahol <strong>a te saját tempód</strong> és aktuális helyzeted határozza meg az irányt.',
+    hint: 'Kép — közös jelenlét, kapcsolódás',
+    fill: 'bg-sage',
+    reversed: false,
+  },
+];
+---
+
+<section class="section bg-cream font-body font-light text-slate" aria-label="Értékajánlat">
+  <div class="mx-auto flex max-w-content flex-col gap-[clamp(48px,6vw,88px)]">
+    <h2
+      class="m-0 mx-auto max-w-[42ch] text-center font-display text-[clamp(26px,2.9vw,40px)] leading-[1.16] font-normal text-pretty"
+    >
+      Biztonságos, ítélkezésmentes menedék, hogy végre bűntudat nélkül letehesd a
+      társadalmi maszkokat és a megfelelési kényszert.
+    </h2>
+
+    {rows.map((row) => <ValueRow {...row} />)}
+  </div>
+</section>
