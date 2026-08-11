@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Adatvédelmi Tájékoztató — Lili Meseműhelye';
+const description = 'Adatvédelmi tájékoztató és GDPR adatkezelési szabályzat a Lili Meseműhelye weboldalához.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="bg-cream px-[4vw] py-[clamp(56px,7vw,104px)] font-body font-light text-slate">
+    <article class="mx-auto max-w-[900px]">
+      <h1 class="m-0 mb-[clamp(14px,2vw,24px)] font-display text-[clamp(32px,4vw,48px)] leading-[1.2] font-normal">
+        Adatvédelmi Tájékoztató
+      </h1>
+
+      <p class="m-0 mb-[clamp(20px,3vw,32px)] text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+        <strong>Lili Meseműhelye</strong>
+      </p>
+
+      <div class="mb-[clamp(28px,4vw,44px)] space-y-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+        <p>
+          Tudom, milyen nehéz megnyílni és ismeretlenül segítséget kérni. Számomra az egyik legfontosabb érték a bizalom és a biztonságos, ítélkezésmentes tér megteremtése. Ez a biztonság nemcsak a mesefoglalkozásokra, hanem a személyes adataid védelmére is maximálisan kiterjed.
+        </p>
+
+        <p>
+          Az alábbi Adatvédelmi Tájékoztatóban emberi nyelven, mégis a jogszabályoknak (különösen az Európai Unió Általános Adatvédelmi Rendeletének, a GDPR-nak) maradéktalanul megfelelve mutatom be, hogyan vigyázok az adataidra.
+        </p>
+      </div>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          1. Ki kezeli az adataidat? (Az Adatkezelő adatai)
+        </h2>
+        <ul class="m-0 list-none space-y-2 p-0 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Vállalkozó neve:</strong> Török Viktória Lili E.V.</li>
+          <li><strong>Székhely:</strong> 6728 Szeged, Alkotmány utca 38.</li>
+          <li><strong>Adószám:</strong> 49365520-1-26</li>
+          <li><strong>Nyilvántartási szám:</strong> 59069373</li>
+          <li><strong>E-mail cím:</strong> lili@lilimesemuhelye.hu</li>
+          <li><strong>Telefonszám:</strong> +36 20 344 4132</li>
+        </ul>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          2. Milyen adatokat kezelek, miért és meddig?
+        </h2>
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A szolgáltatásaim igénybevétele során különböző célokból kezelem az adataidat. Kizárólag azokat az információkat kérem be, amelyek a közös munkánkhoz vagy a jogszabályi kötelezettségeimhez feltétlenül szükségesek.
+        </p>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">A) Időpontfoglalás, kapcsolattartás és megrendelés</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              Amikor jelentkezel az ingyenes próbaalkalomra vagy megrendelsz egy csomagot, az alapadatokra van szükségem a szerződéskötéshez és a kommunikációhoz.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Név, e-mail cím, telefonszám, választott csomag adatai.</li>
+              <li><strong>Jogalap:</strong> Szerződés teljesítése (GDPR 6. cikk (1) bek. b) pont).</li>
+              <li><strong>Megőrzési idő:</strong> A csomag lejárta vagy a szerződés megszűnése után 5 évig (általános polgári jogi elévülés).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">B) Számlázás és fizetés</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              A fizetős csomagok vásárlása esetén a jogszabályok köteleznek a számlakiállításra.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Számlázási név, lakcím, adószám (ha van), tranzakciós adatok.</li>
+              <li><strong>Jogalap:</strong> Jogi kötelezettség teljesítése (GDPR 6. cikk (1) bek. c) pont).</li>
+              <li><strong>Megőrzési idő:</strong> A Számviteli törvény értelmében a számlákat kötelezően 8 évig meg kell őriznem.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">C) Prémium rajzeszközök postázása</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              A fizetős csomagokhoz járó rajzeszközöket külső partnereken keresztül juttatom el hozzád.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Szállítási név, szállítási cím/csomagpont, e-mail cím, telefonszám.</li>
+              <li><strong>Jogalap:</strong> Szerződés teljesítése (GDPR 6. cikk (1) bek. b) pont).</li>
+              <li><strong>Megőrzési idő:</strong> A csomag sikeres kézbesítését követő 5 év (garanciális és szerződéses igények miatt).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">D) Különleges (szenzitív) adatok, Rajzok és a „Saját Mese" felvételek</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              A mesefoglalkozások során (amelyek nem minősülnek terápiának vagy egészségügyi ellátásnak) olyan beszélgetések alakulhatnak ki, és olyan rajzok készülhetnek, amelyek a mentális és lelki állapotodra utalhatnak. A legnagyobb odafigyeléssel kezelem ezeket. Külön igényelheted a találkozók rögzítését is a saját meséd megalkotásához.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Az általad feltöltött/beküldött rajzok (Tally.so), a beszélgetés során megosztott személyes történetek, valamint – kizárólag a kifejezett, előzetes hozzájárulásod esetén – a Google Meet találkozóról készült hangfelvétel és annak leirata (tldv.io szoftverrel).</li>
+              <li><strong>Jogalap:</strong> Az Ön kifejezett, önkéntes hozzájárulása (GDPR 9. cikk (2) bek. a) pont).</li>
+              <li><strong>Megőrzési idő:</strong> Az adattakarékosság elve alapján az általad készített rajzokat, az elkészült meséket, valamint az esetleges hangfelvételeket és leiratokat a programod (csomagod) lezárását követő 60 napon belül véglegesen és visszaállíthatatlanul törlöm. Ezzel biztosítom, hogy ezek az intim információk soha ne lehessenek kompromittálhatók.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">E) Marketing és Hírlevél</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              Szívesen küldök neked edukációs tartalmakat, értesítőket és új ajánlatokat, de csak akkor, ha ezt te is szeretnéd.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Név, e-mail cím.</li>
+              <li><strong>Jogalap:</strong> Az Ön hozzájárulása (GDPR 6. cikk (1) bek. a) pont).</li>
+              <li><strong>Megőrzési idő:</strong> A hozzájárulásod visszavonásáig (leiratkozásig). Minden hírlevél alján egyetlen kattintással leiratkozhatsz.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="m-0 mb-2 font-semibold text-[clamp(16px,1.1vw,18px)]">F) Videós és szöveges visszajelzések (Social Proof)</h3>
+            <p class="mb-3 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              A folyamat során vagy a végén (Videoask platformon) kérhetek tőled visszajelzést. Ezek a tapasztalatok másoknak is erőt adhatnak, de a megosztásuk mindig a te döntésed.
+            </p>
+            <ul class="m-0 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+              <li><strong>Kezelt adatok:</strong> Arcmás, hang, név, az értékelés szövege.</li>
+              <li><strong>Jogalap:</strong> Az Ön kifejezett hozzájárulása, amelyet a videó rögzítésekor külön ad meg.</li>
+              <li><strong>Megőrzési idő:</strong> A hozzájárulás visszavonásáig. Ha később úgy döntesz, hogy nem szeretnéd tovább nyilvánosan látni a videódat, azonnal eltávolítom a felületeimről.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          3. Sütik (Cookies) és Webes analitika
+        </h2>
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A weboldalam a tökéletes működés és a látogatói élmény javítása érdekében sütiket (kisméretű adatfájlokat) használ.
+        </p>
+        <ul class="m-0 list-disc space-y-3 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Alapműködéshez szükséges sütik:</strong> Ezek nélkül az oldal (pl. az időpontfoglaló) nem tud működni. Ezekhez nem kell külön hozzájárulás.</li>
+          <li><strong>Analitikai és Marketing sütik:</strong> Olyan rendszereket használok, mint a Google Analytics, a Facebook Pixel és a Microsoft Clarity, hogy megértsem, hogyan használják az oldalt a látogatók, és releváns hirdetéseket tudjak megjeleníteni. Ezek a sütik kizárólag akkor töltődnek be, ha a weboldalra érkezéskor a felugró ablakban (Cookie banner) erre kifejezett engedélyt adsz. Ezt a beállítást később bármikor módosíthatod.</li>
+        </ul>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          4. Kik láthatják az adataidat? (Adatfeldolgozók listája)
+        </h2>
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          Vállalkozásom egyszemélyes, így a személyes történeteidet és rajzaidat kizárólag én látom. A technikai és adminisztratív folyamatok biztosításához azonban megbízható külső szoftvereket és partnereket (adatfeldolgozókat) veszek igénybe:
+        </p>
+        <ul class="m-0 list-disc space-y-2 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Tárhely és infrastruktúra:</strong> Rackhost Zrt. (domain) és Vercel Inc. (weboldal motor)</li>
+          <li><strong>Könyvelés és Számlázás:</strong> CZÉG-AI Kft. (8640 Fonyód, Béke utca 31.) és a Számlázz.hu (KBOSS.hu Kft.)</li>
+          <li><strong>Fizetési szolgáltató:</strong> Stripe Inc.</li>
+          <li><strong>Időpontfoglalás és Kommunikáció:</strong> Cal.com, Google Meet (Google Ireland Ltd.)</li>
+          <li><strong>Űrlapok és Visszajelzések:</strong> Tally.so és Videoask.com</li>
+          <li><strong>Logisztika:</strong> Harmadik fél webáruházak (eseti jelleggel, ahonnan a csomagot rendelem) és futárszolgálatok (pl. Packeta Hungary Kft., GLS General Logistics Systems Hungary Kft.)</li>
+          <li><strong>Mesterséges Intelligencia / Leiratok:</strong> tldv.io (Kizárólag akkor rögzít és készít leiratot, ha te ezt a "Saját mese" elkészítéséhez előzetesen jóváhagytad.)</li>
+          <li><strong>Hírlevél küldés:</strong> Sequenzy.com</li>
+        </ul>
+        <p class="mt-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A partnerek az adatokat kizárólag az én utasításaim alapján, a jogszabályi keretek betartásával kezelhetik. Fenntartom a jogot, hogy a szolgáltatás minőségének javítása érdekében az adatfeldolgozók listáját frissítsem, amelyről a jelen tájékoztató módosításával értesítem a felhasználókat.
+        </p>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          5. Milyen jogaid vannak az adataiddal kapcsolatban?
+        </h2>
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A GDPR értelmében téged széleskörű jogok illetnek meg a személyes adataid felett:
+        </p>
+        <ol class="m-0 list-decimal space-y-2 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Hozzáférési jog:</strong> Bármikor kérhetsz tájékoztatást arról, hogy milyen adatokat kezelek rólad.</li>
+          <li><strong>Helyesbítés joga:</strong> Kérheted a pontatlan adataid javítását.</li>
+          <li><strong>Törléshez való jog („az elfeledtetéshez való jog"):</strong> Kérheted az adataid törlését (kivéve, ha azt jogszabály, pl. a számlák esetében a Számviteli törvény kizárja).</li>
+          <li><strong>Adatkezelés korlátozásához való jog:</strong> Kérheted, hogy zároljam az adataidat bizonyos esetekben.</li>
+          <li><strong>Adathordozhatósághoz való jog:</strong> Jogod van az adataidat géppel olvasható formátumban megkapni, vagy egy másik szolgáltatónak továbbíttatni.</li>
+          <li><strong>Hozzájárulás visszavonásához és Tiltakozáshoz való jog:</strong> A marketing célú megkeresések, a felvételek vagy az értékelések felhasználása ellen bármikor tiltakozhatsz, és a korábban adott engedélyedet visszavonhatod a lili@lilimesemuhelye.hu e-mail címen.</li>
+        </ol>
+      </section>
+
+      <section class="mb-[clamp(32px,4vw,56px)]">
+        <h2 class="m-0 mb-[clamp(16px,2vw,24px)] font-display text-[clamp(24px,2.8vw,36px)] leading-[1.26] font-normal">
+          6. Panaszkezelés és Jogorvoslat
+        </h2>
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          Számomra a te nyugalmad a legfontosabb. Ha bármilyen kérdésed, kérésed vagy észrevételed van az adataid kezelésével kapcsolatban, kérlek, írj nekem a lili@lilimesemuhelye.hu címre, és soron kívül, barátságosan megoldjuk.
+        </p>
+
+        <p class="mb-4 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          Ha úgy érzed, hogy az adatkezelés során megsértettem a jogaidat, panasszal élhetsz a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):
+        </p>
+
+        <ul class="m-0 mb-4 list-disc space-y-1 pl-6 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          <li><strong>Cím:</strong> 1055 Budapest, Falk Miksa utca 9-11.</li>
+          <li><strong>E-mail:</strong> ugyfelszolgalat@naih.hu</li>
+          <li><strong>Weboldal:</strong> www.naih.hu</li>
+        </ul>
+
+        <p class="text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          Valamint jogodban áll a lakóhelyed szerint illetékes törvényszékhez fordulni.
+        </p>
+      </section>
+
+      <section class="rounded-lg bg-slate/5 p-[clamp(20px,3vw,32px)]">
+        <p class="m-0 text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+          A tájékoztató hatálybalépésének ideje: 2024. [Aktuális hónap, nap]. Kijelentem, hogy jelen adatvédelmi tájékoztatóban foglaltak a valóságnak és az aktuális európai uniós, valamint magyar jogszabályoknak megfelelnek.
+        </p>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
