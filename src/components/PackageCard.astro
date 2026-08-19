@@ -17,8 +17,8 @@ const { name, groupSessions, individualSessions, price, validity, featured = fal
 
 // `soon` marks a feature that is part of the package but not live yet.
 const features = [
-  { text: groupSessions },
-  { text: individualSessions },
+  { text: groupSessions, highlight: true },
+  { text: individualSessions, highlight: true },
   { text: `Felhasználható <strong>${validity}</strong>` },
   { text: 'Prémium rajzeszközök postázása' },
   { text: 'Korlátlan hozzáférés a „Belső munka” sablonokhoz', soon: true },
@@ -60,7 +60,12 @@ const features = [
   >
     {
       features.map((feature) => (
-        <li class="flex items-start gap-3 border-b border-hairline-soft pb-[14px]">
+        <li
+          class:list={[
+            'flex items-start gap-3 border-b border-hairline-soft pb-[14px]',
+            feature.highlight && 'text-terracotta',
+          ]}
+        >
           <svg
             width="18"
             height="18"
