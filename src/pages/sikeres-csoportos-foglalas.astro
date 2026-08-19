@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Sikeres időpontfoglalás — Lili Meseműhelye';
+const description = 'Sikeres időpontfoglalás a csoportos mesefoglalkozásra. Nézd meg a rövid videót a találkozó előtt.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="bg-cream px-[4vw] py-[clamp(56px,7vw,104px)] font-body font-light text-slate">
+    <article class="mx-auto max-w-[720px]">
+      <div
+        class="mb-[clamp(28px,4vw,44px)] border-3 border-terracotta bg-cream px-[clamp(20px,2.6vw,32px)] py-[clamp(16px,2vw,24px)] text-center text-[clamp(15px,1.1vw,18px)] leading-[1.5] font-semibold tracking-[0.16px] text-terracotta"
+      >
+        FONTOS: Mielőtt találkozunk, kérlek, nézd meg ezt a rövid videót!
+      </div>
+
+      <h1 class="m-0 mb-[clamp(20px,3vw,32px)] text-center font-display text-[clamp(30px,3.6vw,44px)] leading-[1.2] font-normal">
+        Sikeres időpontfoglalás! Pár nap és találkozunk.
+      </h1>
+
+      <div class="mb-[clamp(28px,4vw,44px)] space-y-4 text-center text-[clamp(15px,1.1vw,18px)] leading-[1.6] tracking-[0.16px]">
+        <p class="m-0">
+          Nagyon örülök, hogy csatlakozol a következő mesefoglalkozáshoz. A helyedet sikeresen rögzítettük.
+        </p>
+        <p class="m-0">
+          Kérlek, szánj rá mindössze 3 percet, mert olyan elengedhetetlen információkat adok át benne, amelyek segítenek a legtöbbet kihozni a közös mesézésből.
+        </p>
+      </div>
+
+      <div class="aspect-video w-full overflow-hidden">
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube.com/embed/2_JW-0pNXik"
+          title="Fontos tudnivalók a mesefoglalkozás előtt"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>
