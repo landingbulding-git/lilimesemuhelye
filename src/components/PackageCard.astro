@@ -1,20 +1,24 @@
 ---
 interface Props {
   name: string;
-  /** Csoportos/egyéni alkalom breakdown, e.g. "2 csoportos + 1 egyéni alkalom". */
-  sessions: string;
+  /** e.g. "2 csoportos mesefoglalkozás" / "Korlátlan csoportos mesefoglalkozás". */
+  groupSessions: string;
+  /** e.g. "1 egyéni mesefoglalkozás". */
+  individualSessions: string;
   price: string;
-  perSession: string;
   /** First bullet differs per package (3 / 6 / 12 months). */
   validity: string;
   /** Renders the "Legtöbben ezt választják" badge + emphasised frame. */
   featured?: boolean;
 }
 
-const { name, sessions, price, perSession, validity, featured = false } = Astro.props;
+const { name, groupSessions, individualSessions, price, validity, featured = false } =
+  Astro.props;
 
 // `soon` marks a feature that is part of the package but not live yet.
 const features = [
+  { text: groupSessions },
+  { text: individualSessions },
   { text: `Felhasználható <strong>${validity}</strong>` },
   { text: 'Prémium rajzeszközök postázása' },
   { text: 'Korlátlan hozzáférés a „Belső munka” sablonokhoz', soon: true },
@@ -46,15 +50,8 @@ const features = [
     >
       {name}
     </h3>
-    <p
-      class="m-0 text-[clamp(14px,1.05vw,16px)] leading-[1.5] tracking-[0.16px] text-terracotta"
-      set:html={sessions}
-    />
     <p class="m-0 font-display text-[clamp(28px,2.8vw,38px)] leading-[1.1]">
       <strong>{price}</strong>
-    </p>
-    <p class="m-0 text-[clamp(14px,1.05vw,16px)] leading-[1.5] opacity-80">
-      {perSession}
     </p>
   </div>
 
