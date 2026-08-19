@@ -1,6 +1,8 @@
 ---
 interface Props {
   name: string;
+  /** Csoportos/egyéni alkalom breakdown, e.g. "2 csoportos + 1 egyéni alkalom". */
+  sessions: string;
   price: string;
   perSession: string;
   /** First bullet differs per package (3 / 6 / 12 months). */
@@ -9,7 +11,7 @@ interface Props {
   featured?: boolean;
 }
 
-const { name, price, perSession, validity, featured = false } = Astro.props;
+const { name, sessions, price, perSession, validity, featured = false } = Astro.props;
 
 // `soon` marks a feature that is part of the package but not live yet.
 const features = [
@@ -44,6 +46,10 @@ const features = [
     >
       {name}
     </h3>
+    <p
+      class="m-0 text-[clamp(14px,1.05vw,16px)] leading-[1.5] tracking-[0.16px] text-terracotta"
+      set:html={sessions}
+    />
     <p class="m-0 font-display text-[clamp(28px,2.8vw,38px)] leading-[1.1]">
       <strong>{price}</strong>
     </p>
