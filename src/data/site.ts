@@ -1,5 +1,5 @@
 /** Cal.com booking page for the free introductory session. Opens in a new tab. */
-export const BOOKING_URL = 'https://cal.com/lili-mesemuhelye/exkluziv-csoportos';
+export const BOOKING_URL = 'https://cal.com/exkluziv-csoportos-mesefoglalkozas';
 
 /** Applied to every outbound CTA so the landing page stays open behind it. */
 export const EXTERNAL_LINK_ATTRS = {
