@@ -1,6 +1,13 @@
 ---
 import MobileNav from './MobileNav';
 import { EXTERNAL_LINK_ATTRS, NAV_CTA, NAV_LINKS } from '../data/site';
+
+interface Props {
+  navLinks?: ReadonlyArray<{ label: string; href: string }>;
+  navCta?: { label: string; href: string };
+}
+
+const { navLinks = NAV_LINKS, navCta = NAV_CTA } = Astro.props;
 ---
 
 {/* `sticky` is a positioned element, so the mobile menu panel anchors to this bar. */}
@@ -24,7 +31,7 @@ import { EXTERNAL_LINK_ATTRS, NAV_CTA, NAV_LINKS } from '../data/site';
       aria-label="Fő navigáció"
     >
       {
-        NAV_LINKS.map((link) => (
+        navLinks.map((link) => (
           <a
             href={link.href}
             class="text-[16px] whitespace-nowrap text-slate no-underline transition-opacity duration-100 hover:text-slate hover:opacity-70"
@@ -34,18 +41,22 @@ import { EXTERNAL_LINK_ATTRS, NAV_CTA, NAV_LINKS } from '../data/site';
         ))
       }
       <a
-        href={NAV_CTA.href}
+        href={navCta.href}
         {...EXTERNAL_LINK_ATTRS}
         class="btn-apricot px-[18px] py-[7px] text-[14px] font-semibold whitespace-nowrap"
       >
-        {NAV_CTA.label}
+        {navCta.label}
       </a>
     </nav>
 
     {/* Wrapped so the island itself leaves the desktop flex row entirely — an
         empty flex item would still consume a `gap` and skew justify-between. */}
     <div class="md:hidden">
-      <MobileNav client:media="(max-width: 767.98px)" />
+      <MobileNav
+        client:media="(max-width: 767.98px)"
+        navLinks={navLinks}
+        navCta={navCta}
+      />
     </div>
   </div>
 </header>

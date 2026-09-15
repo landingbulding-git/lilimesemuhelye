@@ -1,0 +1,39 @@
+---
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+---
+
+<section
+  id="jelentkezes"
+  class="scroll-mt-[76px] bg-slate px-[4vw] py-[clamp(64px,8vw,120px)] font-body font-light text-cream"
+  aria-label="Záró CTA"
+>
+  <div
+    class="mx-auto flex max-w-[900px] flex-col items-center gap-[clamp(24px,3vw,36px)] text-center"
+  >
+    <h2
+      class="m-0 max-w-[26ch] font-display text-[clamp(28px,3.2vw,44px)] leading-[1.14] font-normal text-pretty"
+    >
+      Tapasztald meg a mesézés élményét kockázatok nélkül, hogy szabadon és nyomás
+      nékül dönthess.
+    </h2>
+
+    <div class="flex flex-col items-center gap-[14px]">
+      <p class="m-0 text-[clamp(15px,1.15vw,18px)] leading-[1.4] font-semibold">
+        <span class="opacity-60 line-through">18.000 Ft</span> helyett{' '}
+        <span class="text-apricot">12.000 Ft</span>
+      </p>
+
+      <a
+        href={BOOKING_URL}
+        {...EXTERNAL_LINK_ATTRS}
+        class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+      >
+        Szeretném kipróbálni a mesék ősi hatását
+      </a>
+
+      <p class="m-0 text-[14px] font-semibold text-apricot">
+        Csak 5 hely maradt!
+      </p>
+    </div>
+  </div>
+</section>

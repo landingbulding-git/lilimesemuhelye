@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import sun from '../assets/illustration-sun.png';
+import sneaker from '../assets/illustration-sneaker.png';
+import sunglasses from '../assets/illustration-sunglasses.png';
+
+const guarantees = [
+  {
+    src: sun,
+    heading: '„Ítélkezésmentes menedék” garancia',
+    body: 'Ha a foglalkozás végén úgy érzed, hogy nem azt a biztonságos, ítélkezésmentes teret kaptad, amire számítottál, <strong>a teljes részvételi díjat visszakapod</strong>&nbsp;kérdések nélkül.',
+  },
+  {
+    src: sneaker,
+    heading: '„Élet-kompatibilis” garancia',
+    body: 'A mindennapjaid kiszámíthatatlanok, ehhez igazodunk. Ha megbetegszik a gyermeked, megbetegszel vagy bármi közbejön, akkor, <strong>még 2 órával a kezdés előtt is</strong> kérhetsz új időpontot következmények nélkül.',
+  },
+  {
+    src: sunglasses,
+    heading: '„Sosem maradsz egyedül” garancia',
+    body: 'Ha nehéz téma vagy fájdalmas érzés jön fel a foglalkozáson, addig nem bontjuk a vonalat (akkor sem, ha túllépjük az időkeretet), amíg újra nyugodtabb pontra nem érsz.',
+  },
+];
+---
+
+<section
+  class="section bg-apricot font-body font-light text-ink"
+  aria-label="Garanciák"
+>
+  <div class="mx-auto flex max-w-content flex-col gap-[clamp(32px,4vw,56px)]">
+    <div class="flex flex-col gap-[clamp(20px,2.4vw,32px)]">
+      <h3
+        class="m-0 text-center font-display text-[clamp(20px,1.9vw,26px)] leading-[1.2] font-normal opacity-90"
+      >
+        A bizalmadat nem csak kiérdemelni szeretném, hanem hosszú távon is
+        fenntartani.
+      </h3>
+      <p
+        class="mx-auto mt-[-8px] mb-0 max-w-[88ch] text-center text-[clamp(15px,1.1vw,17px)] leading-[1.6] tracking-[0.16px] text-pretty"
+      >
+        Tudom, milyen nehéz ismeretlenül segítséget kérni. Számomra az a
+        legfontosabb, hogy a mesézéseket az első perctől kezdve
+        <strong>valóban biztonságosnak érezd</strong>, és ne egy újabb stresszforrás
+        legyen az életedben.
+      </p>
+
+      <div
+        class="mx-auto flex w-full max-w-[900px] flex-col gap-[clamp(24px,3vw,40px)]"
+      >
+        {
+          guarantees.map((item) => (
+            <div class="flex items-center gap-[clamp(20px,2.5vw,36px)] text-left">
+              <Image
+                src={item.src}
+                alt=""
+                width={140}
+                height={140}
+                densities={[1, 2]}
+                loading="lazy"
+                decoding="async"
+                class="block h-[clamp(112px,10vw,140px)] w-[clamp(112px,10vw,140px)] flex-none object-contain"
+              />
+              <div class="flex flex-col gap-[10px]">
+                <h4 class="m-0 font-display text-[clamp(17px,1.45vw,21px)] leading-[1.26] font-normal text-pretty">
+                  {item.heading}
+                </h4>
+                <p
+                  class="m-0 max-w-[70ch] text-[clamp(14px,1vw,15.5px)] leading-[1.6] tracking-[0.16px] text-pretty"
+                  set:html={item.body}
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

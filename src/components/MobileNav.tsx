@@ -3,6 +3,11 @@ import { EXTERNAL_LINK_ATTRS, NAV_CTA, NAV_LINKS } from '../data/site';
 
 const PANEL_ID = 'mobile-nav-panel';
 
+interface Props {
+  navLinks?: ReadonlyArray<{ label: string; href: string }>;
+  navCta?: { label: string; href: string };
+}
+
 /**
  * Mobile-only navigation. Hydrated with `client:media` so the desktop bar — which
  * is plain markup — never pays for this JS.
@@ -10,7 +15,10 @@ const PANEL_ID = 'mobile-nav-panel';
  * The panel is absolutely positioned against the sticky <header>, so it drops
  * below the bar without pushing the page down.
  */
-export default function MobileNav() {
+export default function MobileNav({
+  navLinks = NAV_LINKS,
+  navCta = NAV_CTA,
+}: Props) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -72,7 +80,7 @@ export default function MobileNav() {
         className="absolute inset-x-0 top-full border-b border-hairline bg-cream px-[4vw] pt-2 pb-6 md:hidden"
       >
         <ul className="m-0 flex list-none flex-col gap-1 p-0">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.label}>
               <a
                 href={link.href}
@@ -85,12 +93,12 @@ export default function MobileNav() {
           ))}
           <li className="pt-3">
             <a
-              href={NAV_CTA.href}
+              href={navCta.href}
               {...EXTERNAL_LINK_ATTRS}
               onClick={() => setOpen(false)}
               className="btn-apricot block px-[24px] py-[12px] text-center text-[15px] font-semibold"
             >
-              {NAV_CTA.label}
+              {navCta.label}
             </a>
           </li>
         </ul>
