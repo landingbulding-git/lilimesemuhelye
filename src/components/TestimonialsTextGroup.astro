@@ -1,0 +1,130 @@
+---
+/*
+  Text "wall of love" — sits directly under TestimonialsGroup's two video
+  cards as the second half of the same social-proof block. A CSS column
+  layout gives the staggered masonry look without JS.
+
+  Every name, role, quote and date below is placeholder copy — replace all
+  of it with real participant feedback before this goes live, never ship an
+  invented quote as if a real participant said it.
+*/
+const avatarFills = ['bg-apricot', 'bg-sage', 'bg-terracotta/70'] as const;
+
+const testimonials = [
+  {
+    name: 'Placeholder résztvevő 1',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy résztvevő rövid, valódi visszajelzése a foglalkozásról.',
+  },
+  {
+    name: 'Placeholder résztvevő 2',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy hosszabb, valódi vélemény arról, hogyan élte meg a résztvevő a mesefoglalkozást, mit érzett közben, és mit vitt magával utána.',
+  },
+  {
+    name: 'Placeholder résztvevő 3',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote: 'Placeholder szöveg: rövid, ütős valódi idézet kerül majd ide.',
+  },
+  {
+    name: 'Placeholder résztvevő 4',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy valódi vélemény arról, mennyire érezte biztonságosnak a teret a résztvevő.',
+  },
+  {
+    name: 'Placeholder résztvevő 5',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy valódi visszajelzés a foglalkozás hangulatáról és Liliről.',
+  },
+  {
+    name: 'Placeholder résztvevő 6',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy valódi vélemény, amely részletesen leírja, mi változott a résztvevő számára a foglalkozás óta, és miért ajánlaná másoknak is.',
+  },
+  {
+    name: 'Placeholder résztvevő 7',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote: 'Placeholder szöveg: rövid, valódi idézet kerül majd ide.',
+  },
+  {
+    name: 'Placeholder résztvevő 8',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy valódi vélemény arról, hogyan segített a mesefoglalkozás ellazulni és feltöltődni.',
+  },
+  {
+    name: 'Placeholder résztvevő 9',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy valódi vélemény, amely kitér arra is, miért döntött úgy a résztvevő, hogy kipróbálja a foglalkozást.',
+  },
+  {
+    name: 'Placeholder résztvevő 10',
+    role: 'Placeholder leírás',
+    date: 'Placeholder dátum',
+    quote:
+      'Placeholder szöveg: ide kerül majd egy rövid, valódi zárszó egy elégedett résztvevőtől.',
+  },
+];
+---
+
+<section
+  class="section bg-sage font-body font-light text-slate"
+  aria-label="További vélemények"
+>
+  <div class="mx-auto max-w-content">
+    <div class="columns-1 gap-[clamp(18px,2.2vw,28px)] sm:columns-2 lg:columns-3">
+      {
+        testimonials.map((item, index) => (
+          <div class="mb-[clamp(18px,2.2vw,28px)] flex break-inside-avoid flex-col gap-3 rounded-[18px] border border-hairline-soft bg-cream p-[clamp(18px,2vw,24px)]">
+            <div class="flex items-center gap-3">
+              <span
+                class:list={[
+                  'flex h-10 w-10 flex-none items-center justify-center rounded-full text-[14px] font-semibold text-ink',
+                  avatarFills[index % avatarFills.length],
+                ]}
+                aria-hidden="true"
+              >
+                {item.name.at(-1)}
+              </span>
+              <div class="flex flex-col">
+                <strong class="text-[15px] leading-[1.3]">{item.name}</strong>
+                <span class="text-[13px] leading-[1.3] opacity-70">
+                  {item.role}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex gap-[3px] text-apricot" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map(() => (
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M10 1.5 12.6 7.3 19 8 14.2 12.2 15.5 18.5 10 15.2 4.5 18.5 5.8 12.2 1 8 7.4 7.3Z" />
+                </svg>
+              ))}
+            </div>
+
+            <p class="m-0 text-[14.5px] leading-[1.6] tracking-[0.16px] text-pretty">
+              {item.quote}
+            </p>
+
+            <span class="text-[13px] opacity-60">{item.date}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
