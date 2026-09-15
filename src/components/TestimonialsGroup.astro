@@ -37,29 +37,42 @@ const videoTestimonials = [
 
 const avatarFills = ['bg-apricot', 'bg-sage', 'bg-terracotta/70'] as const;
 
+// Named "<Firstname>.webp" per participant. Zsaklin has none yet, and
+// Liliána/Ági/Anikó 404 under every spelling tried (accented, plain,
+// encoded, upper/lowercase) — all four fall back to the initials badge
+// below until their URLs are confirmed.
+const AVATAR_BASE_URL =
+  'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof';
+
 const textTestimonials = [
   {
     name: 'Afro',
+    avatar: `${AVATAR_BASE_URL}/Afro.webp`,
     quote:
       '„Köszönöm szépen a lehetőséget, hogy részt vehettem ezen a foglalkozáson. Az én legnagyobb félelmem az az volt, hogy vajon meg tudok-e nyílni, viszont nagyon könnyen megnyíltam neked. Nagyon alkalmasnak tartalak téged erre a meseterápiára. Lenyűgözött a lelkesedésed is, illetve a szakmai tudásod. Tudtad tartani a biztonságos teret, egyáltalán nem éreztem, hogy ítélkeztél volna rajtam. És ez számomra egy nagyon-nagyon pozitív dolog volt.”',
   },
   {
     name: 'Liliána',
+    // TODO: 404s at AVATAR_BASE_URL/Liliána.webp (tried accented/plain,
+    // encoded, upper/lowercase) — falls back to initials until confirmed.
     quote:
       '„Nagyon tetszett a közös mesélés, valamint az, hogy utána meditáltunk. Úgy érzem, hogy a mesének nagyon sok mondanivalója van, és nagyon sok szimbóluma is van. A rajzolás kifejezetten tetszett, segített az érzéseimet, a gondolataimat egy kicsit rendezni azáltal, hogy rajzolhattam. A legnagyobb felismerés az volt, hogy önmagam számára is sok tapasztalatot és újdonságot tapasztalhattam meg, viszont az nagyon tetszett, hogy a többiek szemszögét is meghallgathattam. Igazából szerintem minden embernek szüksége lenne rá.”',
   },
   {
     name: 'Edina',
+    avatar: `${AVATAR_BASE_URL}/Edina.webp`,
     quote:
       '„Azon gondolkodtam, hogy ez használni fog-e nekem, milyen hatással lesz rám, de aztán úgy döntöttem, hogy végül is veszítenivalóm nincs, és ez egy új dolog, még akár jól is elsülhet. Jól éreztem magam az együtt töltött idő alatt. Kortól, nemtől, beállítottságtól, nézetektől függetlenül bárkinek szívesen ajánlom ezt a foglalkozást, akinek van kedve és lehetősége két órán át kikapcsolódni teljesen, és csak magával foglalkozni.”',
   },
   {
     name: 'Marianna',
+    avatar: `${AVATAR_BASE_URL}/Marianna.webp`,
     quote:
       '„Abszolút sikerült letenni a megfelelést, teljesen biztonságban éreztem magam. Nagyon türelmes, nyitott és kedves voltál, egyáltalán nem éreztem sürgetve magam, vagy azt, hogy bármire bárhogy kell viselkednem, bármi jó vagy rossz választ kell adnom. Nagyon közvetlen és tényleg biztonságos volt az egész. És szerintem ez egy külön erősség, hogy ennyire jelen tudsz lenni a másikkal, és meghallgatni, és várni. Azoknak ajánlanám, akik szeretnének mondjuk más szemszögből ránézni az adott problémáikra.”',
   },
   {
     name: 'Hermina',
+    avatar: `${AVATAR_BASE_URL}/Hermina.webp`,
     quote:
       '„Én úgy éreztem, hogy nekem sikerült ellazulnom és felszabadultam. A legnagyobb felismerés számomra az volt, hogy mekkora hatalommal tud bírni egy mese, és hogy ez milyen pozitív hatásokkal tud lenni ránk. Szerintem nagyon jól vezetted fel az egészet, és a relaxációs résznél pedig különösen megnyugtató. És én bárkinek jó szívvel ajánlom, aki nyitott rá, és van benne bármifajta érdeklődés e felé, illetve önismeretnek sem utolsó.”',
   },
@@ -70,21 +83,27 @@ const textTestimonials = [
   },
   {
     name: 'Ági',
+    // TODO: 404s at AVATAR_BASE_URL/Ági.webp (tried accented/plain, encoded,
+    // upper/lowercase) — falls back to initials until confirmed.
     quote:
       '„Nekem fantasztikus élmény volt. Nagyon jó volt kiszakadni a hétköznapi teendőkből, és újra visszacsöppenni a mesék világába. Nagyon jó meseválasztás volt, nagyon tetszett, és olyan dolgokat hozott fel, amire egyáltalán nem gondoltam volna, hogy följöhet ilyen gondolati szinten. Rengeteg felismerésem volt a mese hallgatán. Mai modern világban muszáj picit lelassulnunk, és a mesék nagyon sokat tudnak segíteni nekünk ebben.”',
   },
   {
     name: 'Judit',
+    avatar: `${AVATAR_BASE_URL}/Judit.webp`,
     quote:
       '„Szerintem nem sok olyan ember van, akinek nincs szüksége ítélkezésmentes közegre. Viszont minél inkább biztonságos teret adok, biztonságos emberekkel lehetek, annál könnyebb előrelépnem dolgokban mások tapasztalásaiból is, a megteremtett biztos térből. Nagyon-nagyon jó élmény volt a megteremtett közeg, és ennek a lehetőségével átgondolni dolgokat. Először nagyon biztonságos és könnyű dolog online ismerkedni az ilyen jellegű foglalkozásokkal, mert az a biztos tér, amit megteremtesz, még biztosabb azáltal, hogy úgymond te a saját fizikai téredben vagy.”',
   },
   {
     name: 'Anikó',
+    // TODO: 404s at AVATAR_BASE_URL/Anikó.webp (tried accented/plain,
+    // encoded, upper/lowercase) — falls back to initials until confirmed.
     quote:
       '„A mesében aztán teljesen fel tudtam oldódni, és átadtam magam a folyamatnak. És a hozzáállásod, az elfogadásod az tényleg segített abban, hogy utána aztán igazából amilyen szinten ráláttam, azt tudtam mondani, tehát nem volt tabu. Ez pedig engem is meglepett, mert nem gondoltam magamra, hogy ilyen könnyen tudok beszélni a belső világomról. A legnagyobb felismerés számomra az volt, hogy megtaláltam a mesében azt az erőforrást, amit örömmel viszek tovább. Köszönöm ezt a támogató közeget neked.”',
   },
   {
     name: 'Heni',
+    avatar: `${AVATAR_BASE_URL}/Heni.webp`,
     quote:
       '„Nagyon jól éreztem magam, abszolút el tudtam vonatkoztatni minden külső tényezőtől. És az egész alkalom alatt azt éreztem, hogy biztonságban vagyok, és hogy a témámról bármit mondhatok, azt megérted, és elfogadod. A legnagyobb felismerésem az volt, hogy bátrabbnak kell lennem, és hogy az álmaimért azért küzdjek tovább. Én mindenkinek ajánlanám, aki önismerettel foglalkozik, mert szerintem ez a mesézés ez egy tök jó része az önismereti utunknak.”',
   },
@@ -175,15 +194,27 @@ const textTestimonials = [
         textTestimonials.map((item, index) => (
           <div class="mb-[clamp(18px,2.2vw,28px)] flex break-inside-avoid flex-col gap-3 rounded-[18px] border border-hairline-soft bg-cream p-[clamp(18px,2vw,24px)]">
             <div class="flex items-center gap-3">
-              <span
-                class:list={[
-                  'flex h-10 w-10 flex-none items-center justify-center rounded-full text-[14px] font-semibold text-ink',
-                  avatarFills[index % avatarFills.length],
-                ]}
-                aria-hidden="true"
-              >
-                {item.name.charAt(0)}
-              </span>
+              {item.avatar ? (
+                <img
+                  src={item.avatar}
+                  alt=""
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-10 w-10 flex-none rounded-full object-cover"
+                />
+              ) : (
+                <span
+                  class:list={[
+                    'flex h-10 w-10 flex-none items-center justify-center rounded-full text-[14px] font-semibold text-ink',
+                    avatarFills[index % avatarFills.length],
+                  ]}
+                  aria-hidden="true"
+                >
+                  {item.name.charAt(0)}
+                </span>
+              )}
               <strong class="text-[15px] leading-[1.3]">{item.name}</strong>
             </div>
 
