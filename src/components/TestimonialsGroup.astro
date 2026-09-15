@@ -3,35 +3,30 @@
   "Wall of love" — two video testimonials plus a masonry wall of short text
   reviews underneath, all in one section.
 
-  Video files live in S3 and are not final yet, so `videoSrc` below are
-  placeholder URLs (swap for the real `https://<bucket>.s3.amazonaws.com/...`
-  links once uploaded). No poster image exists yet either, so each card shows
-  a sage → slate gradient behind the <video> until it has a real poster/first
-  frame — once real footage is wired up this reads as the video's own
-  thumbnail.
+  Video files and their poster frames live in the same Vercel Blob store as
+  the text-testimonial avatars below.
 
-  The two video testimonials below are still placeholders (name, role and
-  quote alike) — replace them with real participant feedback before this
-  goes live, never ship an invented quote as if a real participant said it.
-  The text testimonials underneath are real, Typeform-collected feedback
-  from actual group session participants.
+  Both video testimonials and the text testimonials underneath are real,
+  Typeform-collected feedback from actual group session participants.
 */
 const videoTestimonials = [
   {
-    name: 'Placeholder név',
-    role: 'Placeholder leírás',
+    name: 'Ági',
     quote:
-      'Ide kerül majd egy résztvevő saját szavaival elmondott élménye a csoportos mesefoglalkozásról.',
+      'Olyan dolgokat hozott fel, amire egyáltalán nem gondoltam volna, hogy följöhet... Szerintem még napokig fog hullámozni bennem ez az érzés, lesznek még felismeréseim...',
     videoSrc:
-      'https://REPLACE-WITH-BUCKET.s3.amazonaws.com/testimonials/placeholder-1.mp4',
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/agi_compressed.mp4',
+    poster:
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/agi_compressed_poster.jpg',
   },
   {
-    name: 'Placeholder név',
-    role: 'Placeholder leírás',
+    name: 'Marianna',
     quote:
-      'Ide kerül majd egy másik résztvevő saját szavaival elmondott élménye a csoportos mesefoglalkozásról.',
+      'Abszolút sikerült letenni a megfelelést, teljesen biztonságban éreztem magam... Azoknak ajánlanám, akik szeretnének mondjuk más szemszögből ránézni az adott problémáikra, amivel szembesülnek..',
     videoSrc:
-      'https://REPLACE-WITH-BUCKET.s3.amazonaws.com/testimonials/placeholder-2.mp4',
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/marianna_compressed.mp4',
+    poster:
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/marianna_compressed_poster.jpg',
   },
 ];
 
@@ -131,13 +126,14 @@ const textTestimonials = [
         videoTestimonials.map((item) => (
           <div class="flex flex-col gap-5 rounded-[24px] bg-cream p-[clamp(20px,2.4vw,28px)] text-slate shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] sm:flex-row sm:items-start">
             <div
-              class="relative aspect-4/5 w-full flex-none overflow-hidden rounded-[20px] bg-gradient-to-br from-sage to-slate sm:w-[42%]"
+              class="relative aspect-4/5 w-full flex-none overflow-hidden rounded-[20px] bg-slate sm:w-[42%]"
               data-video-card
             >
               <video
                 class="absolute inset-0 h-full w-full object-cover"
                 preload="none"
                 playsinline
+                poster={item.poster}
               >
                 <source src={item.videoSrc} type="video/mp4" />
               </video>
@@ -180,11 +176,15 @@ const textTestimonials = [
                 „{item.quote}”
               </p>
 
-              <p class="m-0 text-[15px] leading-[1.4]">
-                <strong>{item.name}</strong>
-                <br />
-                <span class="opacity-75">{item.role}</span>
-              </p>
+              <strong class="text-[15px] leading-[1.4]">{item.name}</strong>
+
+              <span class="mt-1 flex w-fit items-center gap-[6px] rounded-pill bg-sage/30 px-[10px] py-[5px] text-[12px] font-semibold text-slate">
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8.5" />
+                  <path d="m6.2 10.2 2.6 2.6 5-5.2" />
+                </svg>
+                Typeform verified
+              </span>
             </div>
           </div>
         ))
