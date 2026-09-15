@@ -1,0 +1,32 @@
+---
+/*
+  Purely decorative seam for two same-background sections sitting back to
+  back (here: the sage "velemenyek" and "Elakadás" sections on
+  csoportfoglalkozas). A plain background-color change doesn't read as a
+  break when both neighbours share it, so this drops in a thin cream strip
+  with a hand-drawn squiggle — same stroke style as the accent mark in
+  Struggle.astro — to give the eye a stopping point between them.
+*/
+---
+
+<div class="bg-cream" aria-hidden="true">
+  <div
+    class="mx-auto flex max-w-content items-center justify-center py-[clamp(18px,2.6vw,30px)]"
+  >
+    <svg
+      width="132"
+      height="24"
+      viewBox="0 0 132 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="text-slate opacity-60"
+    >
+      <path d="M2 12c7-9 15-9 22 0s15 9 22 0" />
+      <circle cx="66" cy="12" r="3.5" />
+      <path d="M86 12c7-9 15-9 22 0s15 9 22 0" />
+    </svg>
+  </div>
+</div>
