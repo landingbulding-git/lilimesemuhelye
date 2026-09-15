@@ -37,10 +37,12 @@ const videoTestimonials = [
 
 const avatarFills = ['bg-apricot', 'bg-sage', 'bg-terracotta/70'] as const;
 
-// Named "<Firstname>.webp" per participant. Zsaklin has none yet, and
-// Liliána/Ági/Anikó 404 under every spelling tried (accented, plain,
-// encoded, upper/lowercase) — all four fall back to the initials badge
-// below until their URLs are confirmed.
+// Named "<Firstname>.webp" per participant. Zsaklin has none yet, so her
+// card falls back to the initials badge below. Liliána, Ági and Anikó's
+// files were saved with a decomposed (NFD) accent — a combining U+0301
+// after the base letter — instead of the usual single precomposed
+// character, so those three are spelled out as full URLs below rather
+// than templated off AVATAR_BASE_URL.
 const AVATAR_BASE_URL =
   'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof';
 
@@ -53,8 +55,8 @@ const textTestimonials = [
   },
   {
     name: 'Liliána',
-    // TODO: 404s at AVATAR_BASE_URL/Liliána.webp (tried accented/plain,
-    // encoded, upper/lowercase) — falls back to initials until confirmed.
+    avatar:
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/lilia%CC%81na.webp',
     quote:
       '„Nagyon tetszett a közös mesélés, valamint az, hogy utána meditáltunk. Úgy érzem, hogy a mesének nagyon sok mondanivalója van, és nagyon sok szimbóluma is van. A rajzolás kifejezetten tetszett, segített az érzéseimet, a gondolataimat egy kicsit rendezni azáltal, hogy rajzolhattam. A legnagyobb felismerés az volt, hogy önmagam számára is sok tapasztalatot és újdonságot tapasztalhattam meg, viszont az nagyon tetszett, hogy a többiek szemszögét is meghallgathattam. Igazából szerintem minden embernek szüksége lenne rá.”',
   },
@@ -83,8 +85,8 @@ const textTestimonials = [
   },
   {
     name: 'Ági',
-    // TODO: 404s at AVATAR_BASE_URL/Ági.webp (tried accented/plain, encoded,
-    // upper/lowercase) — falls back to initials until confirmed.
+    avatar:
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/A%CC%81gi.webp',
     quote:
       '„Nekem fantasztikus élmény volt. Nagyon jó volt kiszakadni a hétköznapi teendőkből, és újra visszacsöppenni a mesék világába. Nagyon jó meseválasztás volt, nagyon tetszett, és olyan dolgokat hozott fel, amire egyáltalán nem gondoltam volna, hogy följöhet ilyen gondolati szinten. Rengeteg felismerésem volt a mese hallgatán. Mai modern világban muszáj picit lelassulnunk, és a mesék nagyon sokat tudnak segíteni nekünk ebben.”',
   },
@@ -96,8 +98,8 @@ const textTestimonials = [
   },
   {
     name: 'Anikó',
-    // TODO: 404s at AVATAR_BASE_URL/Anikó.webp (tried accented/plain,
-    // encoded, upper/lowercase) — falls back to initials until confirmed.
+    avatar:
+      'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/socialproof/Aniko%CC%81.webp',
     quote:
       '„A mesében aztán teljesen fel tudtam oldódni, és átadtam magam a folyamatnak. És a hozzáállásod, az elfogadásod az tényleg segített abban, hogy utána aztán igazából amilyen szinten ráláttam, azt tudtam mondani, tehát nem volt tabu. Ez pedig engem is meglepett, mert nem gondoltam magamra, hogy ilyen könnyen tudok beszélni a belső világomról. A legnagyobb felismerés számomra az volt, hogy megtaláltam a mesében azt az erőforrást, amit örömmel viszek tovább. Köszönöm ezt a támogató közeget neked.”',
   },
