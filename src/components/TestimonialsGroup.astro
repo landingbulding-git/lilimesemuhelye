@@ -10,10 +10,11 @@
   frame — once real footage is wired up this reads as the video's own
   thumbnail.
 
-  Every name, role, quote and date below — video and text alike — is
-  explicit placeholder copy. Replace all of it with real participant
-  feedback before this goes live: never ship an invented quote as if a real
-  participant said it.
+  The two video testimonials below are still placeholders (name, role and
+  quote alike) — replace them with real participant feedback before this
+  goes live, never ship an invented quote as if a real participant said it.
+  The text testimonials underneath are real, Typeform-collected feedback
+  from actual group session participants.
 */
 const videoTestimonials = [
   {
@@ -38,72 +39,54 @@ const avatarFills = ['bg-apricot', 'bg-sage', 'bg-terracotta/70'] as const;
 
 const textTestimonials = [
   {
-    name: 'Placeholder résztvevő 1',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Afro',
     quote:
-      'Placeholder szöveg: ide kerül majd egy résztvevő rövid, valódi visszajelzése a foglalkozásról.',
+      '„Köszönöm szépen a lehetőséget, hogy részt vehettem ezen a foglalkozáson. Az én legnagyobb félelmem az az volt, hogy vajon meg tudok-e nyílni, viszont nagyon könnyen megnyíltam neked. Nagyon alkalmasnak tartalak téged erre a meseterápiára. Lenyűgözött a lelkesedésed is, illetve a szakmai tudásod. Tudtad tartani a biztonságos teret, egyáltalán nem éreztem, hogy ítélkeztél volna rajtam. És ez számomra egy nagyon-nagyon pozitív dolog volt.”',
   },
   {
-    name: 'Placeholder résztvevő 2',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Liliána',
     quote:
-      'Placeholder szöveg: ide kerül majd egy hosszabb, valódi vélemény arról, hogyan élte meg a résztvevő a mesefoglalkozást, mit érzett közben, és mit vitt magával utána.',
+      '„Nagyon tetszett a közös mesélés, valamint az, hogy utána meditáltunk. Úgy érzem, hogy a mesének nagyon sok mondanivalója van, és nagyon sok szimbóluma is van. A rajzolás kifejezetten tetszett, segített az érzéseimet, a gondolataimat egy kicsit rendezni azáltal, hogy rajzolhattam. A legnagyobb felismerés az volt, hogy önmagam számára is sok tapasztalatot és újdonságot tapasztalhattam meg, viszont az nagyon tetszett, hogy a többiek szemszögét is meghallgathattam. Igazából szerintem minden embernek szüksége lenne rá.”',
   },
   {
-    name: 'Placeholder résztvevő 3',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
-    quote: 'Placeholder szöveg: rövid, ütős valódi idézet kerül majd ide.',
-  },
-  {
-    name: 'Placeholder résztvevő 4',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Edina',
     quote:
-      'Placeholder szöveg: ide kerül majd egy valódi vélemény arról, mennyire érezte biztonságosnak a teret a résztvevő.',
+      '„Azon gondolkodtam, hogy ez használni fog-e nekem, milyen hatással lesz rám, de aztán úgy döntöttem, hogy végül is veszítenivalóm nincs, és ez egy új dolog, még akár jól is elsülhet. Jól éreztem magam az együtt töltött idő alatt. Kortól, nemtől, beállítottságtól, nézetektől függetlenül bárkinek szívesen ajánlom ezt a foglalkozást, akinek van kedve és lehetősége két órán át kikapcsolódni teljesen, és csak magával foglalkozni.”',
   },
   {
-    name: 'Placeholder résztvevő 5',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Marianna',
     quote:
-      'Placeholder szöveg: ide kerül majd egy valódi visszajelzés a foglalkozás hangulatáról és Liliről.',
+      '„Abszolút sikerült letenni a megfelelést, teljesen biztonságban éreztem magam. Nagyon türelmes, nyitott és kedves voltál, egyáltalán nem éreztem sürgetve magam, vagy azt, hogy bármire bárhogy kell viselkednem, bármi jó vagy rossz választ kell adnom. Nagyon közvetlen és tényleg biztonságos volt az egész. És szerintem ez egy külön erősség, hogy ennyire jelen tudsz lenni a másikkal, és meghallgatni, és várni. Azoknak ajánlanám, akik szeretnének mondjuk más szemszögből ránézni az adott problémáikra.”',
   },
   {
-    name: 'Placeholder résztvevő 6',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Hermina',
     quote:
-      'Placeholder szöveg: ide kerül majd egy valódi vélemény, amely részletesen leírja, mi változott a résztvevő számára a foglalkozás óta, és miért ajánlaná másoknak is.',
+      '„Én úgy éreztem, hogy nekem sikerült ellazulnom és felszabadultam. A legnagyobb felismerés számomra az volt, hogy mekkora hatalommal tud bírni egy mese, és hogy ez milyen pozitív hatásokkal tud lenni ránk. Szerintem nagyon jól vezetted fel az egészet, és a relaxációs résznél pedig különösen megnyugtató. És én bárkinek jó szívvel ajánlom, aki nyitott rá, és van benne bármifajta érdeklődés e felé, illetve önismeretnek sem utolsó.”',
   },
   {
-    name: 'Placeholder résztvevő 7',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
-    quote: 'Placeholder szöveg: rövid, valódi idézet kerül majd ide.',
-  },
-  {
-    name: 'Placeholder résztvevő 8',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Zsaklin',
     quote:
-      'Placeholder szöveg: ide kerül majd egy valódi vélemény arról, hogyan segített a mesefoglalkozás ellazulni és feltöltődni.',
+      '„Nekem nagyon sokat adott a Lili mesefoglalkozása. Nem is hittem volna, hogy a mese és a rajzolás ennyi mindent ki tud hozni az emberből. Nagyon-nagyon segítség volt Lili nekem a kérdései, mert én az elején nem nagyon tudtam beszélni a rajzomról, de a kérdései sokat segítettek és nagyon sok mindent mélyről felhoztak belőlem, kihoztak belőlem, úgyhogy én csak ajánlani tudom a Lilit. Hatalmas köszönet neki.”',
   },
   {
-    name: 'Placeholder résztvevő 9',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Ági',
     quote:
-      'Placeholder szöveg: ide kerül majd egy valódi vélemény, amely kitér arra is, miért döntött úgy a résztvevő, hogy kipróbálja a foglalkozást.',
+      '„Nekem fantasztikus élmény volt. Nagyon jó volt kiszakadni a hétköznapi teendőkből, és újra visszacsöppenni a mesék világába. Nagyon jó meseválasztás volt, nagyon tetszett, és olyan dolgokat hozott fel, amire egyáltalán nem gondoltam volna, hogy följöhet ilyen gondolati szinten. Rengeteg felismerésem volt a mese hallgatán. Mai modern világban muszáj picit lelassulnunk, és a mesék nagyon sokat tudnak segíteni nekünk ebben.”',
   },
   {
-    name: 'Placeholder résztvevő 10',
-    role: 'Placeholder leírás',
-    date: 'Placeholder dátum',
+    name: 'Judit',
     quote:
-      'Placeholder szöveg: ide kerül majd egy rövid, valódi zárszó egy elégedett résztvevőtől.',
+      '„Szerintem nem sok olyan ember van, akinek nincs szüksége ítélkezésmentes közegre. Viszont minél inkább biztonságos teret adok, biztonságos emberekkel lehetek, annál könnyebb előrelépnem dolgokban mások tapasztalásaiból is, a megteremtett biztos térből. Nagyon-nagyon jó élmény volt a megteremtett közeg, és ennek a lehetőségével átgondolni dolgokat. Először nagyon biztonságos és könnyű dolog online ismerkedni az ilyen jellegű foglalkozásokkal, mert az a biztos tér, amit megteremtesz, még biztosabb azáltal, hogy úgymond te a saját fizikai téredben vagy.”',
+  },
+  {
+    name: 'Anikó',
+    quote:
+      '„A mesében aztán teljesen fel tudtam oldódni, és átadtam magam a folyamatnak. És a hozzáállásod, az elfogadásod az tényleg segített abban, hogy utána aztán igazából amilyen szinten ráláttam, azt tudtam mondani, tehát nem volt tabu. Ez pedig engem is meglepett, mert nem gondoltam magamra, hogy ilyen könnyen tudok beszélni a belső világomról. A legnagyobb felismerés számomra az volt, hogy megtaláltam a mesében azt az erőforrást, amit örömmel viszek tovább. Köszönöm ezt a támogató közeget neked.”',
+  },
+  {
+    name: 'Heni',
+    quote:
+      '„Nagyon jól éreztem magam, abszolút el tudtam vonatkoztatni minden külső tényezőtől. És az egész alkalom alatt azt éreztem, hogy biztonságban vagyok, és hogy a témámról bármit mondhatok, azt megérted, és elfogadod. A legnagyobb felismerésem az volt, hogy bátrabbnak kell lennem, és hogy az álmaimért azért küzdjek tovább. Én mindenkinek ajánlanám, aki önismerettel foglalkozik, mert szerintem ez a mesézés ez egy tök jó része az önismereti utunknak.”',
   },
 ];
 ---
@@ -199,14 +182,9 @@ const textTestimonials = [
                 ]}
                 aria-hidden="true"
               >
-                {item.name.at(-1)}
+                {item.name.charAt(0)}
               </span>
-              <div class="flex flex-col">
-                <strong class="text-[15px] leading-[1.3]">{item.name}</strong>
-                <span class="text-[13px] leading-[1.3] opacity-70">
-                  {item.role}
-                </span>
-              </div>
+              <strong class="text-[15px] leading-[1.3]">{item.name}</strong>
             </div>
 
             <div class="flex gap-[3px] text-apricot" aria-label="5 out of 5 stars">
@@ -221,7 +199,13 @@ const textTestimonials = [
               {item.quote}
             </p>
 
-            <span class="text-[13px] opacity-60">{item.date}</span>
+            <span class="mt-1 flex w-fit items-center gap-[6px] rounded-pill bg-sage/30 px-[10px] py-[5px] text-[12px] font-semibold text-slate">
+              <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8.5" />
+                <path d="m6.2 10.2 2.6 2.6 5-5.2" />
+              </svg>
+              Typeform verified
+            </span>
           </div>
         ))
       }
