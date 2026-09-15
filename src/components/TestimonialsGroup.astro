@@ -1,0 +1,129 @@
+---
+/*
+  "Wall of love" — two video testimonials. Video files live in S3 and are not
+  final yet, so `videoSrc` below are placeholder URLs (swap for the real
+  `https://<bucket>.s3.amazonaws.com/...` links once uploaded) and the quote
+  copy is clearly-marked placeholder text — replace both with a real customer's
+  words and name before this goes live, never ship an invented quote as if a
+  real participant said it.
+
+  No poster image exists yet either, so each card shows a sage → slate
+  gradient behind the <video> until it has a real poster/first frame — once
+  real footage is wired up this reads as the video's own thumbnail.
+*/
+const testimonials = [
+  {
+    name: 'Placeholder név',
+    role: 'Placeholder leírás',
+    quote:
+      'Ide kerül majd egy résztvevő saját szavaival elmondott élménye a csoportos mesefoglalkozásról.',
+    videoSrc:
+      'https://REPLACE-WITH-BUCKET.s3.amazonaws.com/testimonials/placeholder-1.mp4',
+  },
+  {
+    name: 'Placeholder név',
+    role: 'Placeholder leírás',
+    quote:
+      'Ide kerül majd egy másik résztvevő saját szavaival elmondott élménye a csoportos mesefoglalkozásról.',
+    videoSrc:
+      'https://REPLACE-WITH-BUCKET.s3.amazonaws.com/testimonials/placeholder-2.mp4',
+  },
+];
+---
+
+<section
+  id="velemenyek"
+  class="section bg-apricot font-body font-light text-ink"
+  aria-label="Vélemények"
+>
+  <div
+    class="mx-auto flex max-w-content flex-col gap-[clamp(32px,4vw,56px)]"
+  >
+    <h2
+      class="m-0 mx-auto max-w-[34ch] text-center font-display text-[clamp(26px,2.9vw,40px)] leading-[1.16] font-normal text-pretty"
+    >
+      Ők már megtapasztalták a csoportos mesefoglalkozások erejét.
+    </h2>
+
+    <div class="grid gap-[clamp(24px,3vw,40px)] sm:grid-cols-2">
+      {
+        testimonials.map((item) => (
+          <div class="flex flex-col gap-5 bg-cream p-[clamp(20px,2.4vw,28px)] text-slate sm:flex-row sm:items-start">
+            <div
+              class="relative aspect-4/5 w-full flex-none overflow-hidden rounded-[20px] bg-gradient-to-br from-sage to-slate sm:w-[42%]"
+              data-video-card
+            >
+              <video
+                class="absolute inset-0 h-full w-full object-cover"
+                preload="none"
+                playsinline
+              >
+                <source src={item.videoSrc} type="video/mp4" />
+              </video>
+
+              <button
+                type="button"
+                data-play-trigger
+                aria-label="Videó lejátszása"
+                class="absolute inset-0 flex cursor-pointer items-center justify-center border-0 bg-slate/25 transition-opacity duration-100 hover:opacity-90"
+              >
+                <span class="flex h-14 w-14 items-center justify-center rounded-full bg-slate/80">
+                  <svg
+                    width="20"
+                    height="22"
+                    viewBox="0 0 20 22"
+                    fill="var(--color-cream)"
+                    aria-hidden="true"
+                    class="ml-[3px]"
+                  >
+                    <path d="M0 0 20 11 0 22Z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+            <div class="flex flex-1 flex-col gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-apricot">
+                <svg
+                  width="18"
+                  height="14"
+                  viewBox="0 0 18 14"
+                  fill="var(--color-ink)"
+                  aria-hidden="true"
+                >
+                  <path d="M0 14V8.4C0 3.36 2.88.72 7.2 0l.9 1.98c-2.34.72-3.6 2.16-3.78 4.32H7.2V14H0Zm10.08 0V8.4c0-5.04 2.88-7.68 7.2-8.4l.9 1.98c-2.34.72-3.6 2.16-3.78 4.32h3.78V14h-7.1Z" />
+                </svg>
+              </span>
+
+              <p class="m-0 text-[clamp(16px,1.2vw,19px)] leading-[1.5] text-pretty">
+                „{item.quote}”
+              </p>
+
+              <p class="m-0 text-[15px] leading-[1.4]">
+                <strong>{item.name}</strong>
+                <br />
+                <span class="opacity-75">{item.role}</span>
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // Poster-less by design (see comment above): revealing native controls and
+  // starting playback on click is enough until real footage + posters land.
+  document.querySelectorAll<HTMLElement>('[data-video-card]').forEach((card) => {
+    const video = card.querySelector('video');
+    const trigger = card.querySelector('[data-play-trigger]');
+    if (!(video instanceof HTMLVideoElement) || !trigger) return;
+
+    trigger.addEventListener('click', () => {
+      video.controls = true;
+      video.play();
+      trigger.remove();
+    });
+  });
+</script>
