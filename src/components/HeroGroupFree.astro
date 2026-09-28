@@ -106,16 +106,21 @@ const assurances = [
       id="jelentkezes"
       class="scroll-mt-[96px] flex w-full max-w-[760px] flex-col overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] sm:flex-row-reverse sm:items-stretch"
     >
-      {/* Above the fold: eager so it is not discovered late. */}
-      <Image
-        src={signupCover}
-        alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
-        widths={[320, 480, 640]}
-        sizes="(max-width: 639px) 100vw, 38vw"
-        loading="eager"
-        decoding="async"
-        class="aspect-[4/3] w-full flex-none object-cover object-top sm:aspect-auto sm:h-full sm:w-[38%]"
-      />
+      {/* A plain div (no intrinsic aspect ratio of its own) stretches to match the
+          form's height in the row layout; the Image is absolutely positioned inside
+          it so its own width/height attributes can't fight that stretch. */}
+      <div class="relative aspect-[4/3] w-full flex-none sm:aspect-auto sm:w-[38%]">
+        {/* Above the fold: eager so it is not discovered late. */}
+        <Image
+          src={signupCover}
+          alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 639px) 100vw, 38vw"
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover object-top"
+        />
+      </div>
 
       <form
         id="signup-form"
