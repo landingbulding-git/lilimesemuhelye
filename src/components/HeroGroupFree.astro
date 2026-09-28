@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.png';
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+
+const assurances = [
+  '100% Online & Ingyenes',
+  'Semmilyen kötelezettséggel nem jár',
+  'Nincs kártyaadat megadás',
+];
+---
+
+{/* Desktop carries no vertical padding and no minimum height: the image cell is the
+    tallest thing there, so it sets the section's height and its top and bottom edges
+    ARE the section's edges. Anything that forces the section taller reappears as dead
+    space above the content.
+
+    Mobile stacks copy-then-image, so a top inset sits above the copy rather than
+    above nothing — it reads as breathing room under the header, not as a gap. */}
+<section
+  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(32px,9vw,56px)] pb-0 font-body font-light text-slate md:pt-0"
+  aria-label="Bemutatkozás"
+>
+  <div
+    class="mx-auto grid w-full max-w-canvas items-center gap-[clamp(28px,4vw,72px)] md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+  >
+    {/* Centred while stacked, left-aligned once the two columns appear. */}
+    <div
+      class="mx-auto flex max-w-[700px] flex-col items-center gap-[clamp(14px,2.2vh,24px)] text-center md:mx-0 md:items-start md:text-left"
+    >
+      <div
+        class="flex items-center gap-2 rounded-pill bg-apricot/25 px-[16px] py-[8px] text-[13px] font-semibold tracking-[0.16px]"
+      >
+        <span class="flex gap-[2px] text-terracotta" aria-hidden="true">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5 12.6 7.3 19 8 14.2 12.2 15.5 18.5 10 15.2 4.5 18.5 5.8 12.2 1 8 7.4 7.3Z" />
+              </svg>
+            ))
+          }
+        </span>
+        <span>A résztvevők 100%-a ajánlja</span>
+      </div>
+
+      <h1
+        class="m-0 font-display text-[clamp(22px,2.05vw,32px)] leading-[1.18] font-normal tracking-[-0.01em] text-pretty"
+      >
+        Pihenj meg egy biztonságos közegben, miközben a mesék ősi iránytűként
+        vezetnek egy olyan élet felé, ahol bűntudat nélkül lehetsz önmagad.
+      </h1>
+
+      <p
+        class="m-0 max-w-[62ch] text-[clamp(13px,0.95vw,16px)] leading-[1.55] tracking-[0.16px] text-pretty"
+      >
+        A mesék ősi szimbólumai neked is segíthetnek feloldani az elakadásaidat
+        <strong>saját otthonod kényelméből</strong>. A mesefoglalkozások
+        során <strong>nem kapsz diagnózist, nincsenek elvárások</strong>, helyette
+        „énidőt” teremtünk számodra, hogy újra szeretettel kapcsolódhass saját
+        magaddal.
+      </p>
+
+      <div class="flex flex-col items-center gap-[18px] md:items-start">
+        <a
+          href={BOOKING_URL}
+          {...EXTERNAL_LINK_ATTRS}
+          class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+        >
+          Szeretném kipróbálni a mesék ősi hatását díjmentesen
+        </a>
+
+        <ul
+          class="m-0 flex list-none flex-wrap justify-center gap-x-[22px] gap-y-[10px] p-0 text-[14px] leading-[1.4] tracking-[0.16px] opacity-85 md:justify-start"
+        >
+          {
+            assurances.map((item) => (
+              <li class="flex items-center gap-[9px]">
+                <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    {/* The cutout is transparent — no fill behind it, the page cream shows through.
+        The cell keeps the source's 4:5 ratio and carries no height cap, so the image
+        fills it edge to edge with nothing letterboxed. */}
+    <div
+      class="relative aspect-4/5 w-4/5 justify-self-center md:justify-self-end"
+    >
+      {/* Above the fold: eager + high priority so it is not discovered late. */}
+      <Image
+        src={heroImage}
+        alt="Lili, a Lili Meseműhelye alapítója"
+        widths={[480, 720, 1080]}
+        sizes="(max-width: 768px) 74vw, 36vw"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  </div>
+</section>
