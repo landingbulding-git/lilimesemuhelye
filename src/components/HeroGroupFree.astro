@@ -14,22 +14,10 @@ const assurances = [
   aria-label="Bemutatkozás"
 >
   <div
-    class="mx-auto flex w-full max-w-canvas flex-col items-center gap-[clamp(20px,3vw,32px)]"
+    class="mx-auto grid w-full max-w-canvas items-center gap-[clamp(28px,4vw,56px)] md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
   >
-    <div class="w-full max-w-[320px] overflow-hidden rounded-[20px] shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)]">
-      <Image
-        src={signupCover}
-        alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
-        widths={[320, 480, 640]}
-        sizes="320px"
-        loading="eager"
-        decoding="async"
-        class="aspect-[4/3] h-full w-full object-cover object-top"
-      />
-    </div>
-
     <div
-      class="mx-auto flex max-w-[700px] flex-col items-center gap-[clamp(14px,2.2vh,24px)] text-center"
+      class="mx-auto flex max-w-[700px] flex-col items-center gap-[clamp(14px,2.2vh,24px)] text-center md:mx-0 md:items-start md:text-left"
     >
       <div
         class="flex items-center gap-2 rounded-pill bg-apricot/25 px-[16px] py-[8px] text-[13px] font-semibold tracking-[0.16px]"
@@ -54,7 +42,7 @@ const assurances = [
       </h1>
 
       <div
-        class="flex flex-wrap items-center justify-center gap-x-[22px] gap-y-[10px] text-[15px] font-semibold text-terracotta"
+        class="flex flex-wrap items-center justify-center gap-x-[22px] gap-y-[10px] text-[15px] font-semibold text-terracotta md:justify-start"
       >
         <div class="flex items-center gap-[9px]">
           <svg
@@ -91,30 +79,42 @@ const assurances = [
           <span>YouTube</span>
         </div>
       </div>
+
+      <div class="flex flex-col items-center gap-[14px] md:items-start">
+        <a
+          href="https://luma.com/event/evt-QCOFb7AANayilvW"
+          class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+          data-luma-action="checkout"
+          data-luma-event-id="evt-QCOFb7AANayilvW"
+        >
+          Kipróbálom a mesék ősi hatását
+        </a>
+
+        <ul
+          class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85 md:justify-start"
+        >
+          {
+            assurances.map((item) => (
+              <li class="flex items-center gap-[8px]">
+                <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
-    <div class="flex flex-col items-center gap-[14px]">
-      <a
-        href="https://luma.com/event/evt-QCOFb7AANayilvW"
-        class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
-        data-luma-action="checkout"
-        data-luma-event-id="evt-QCOFb7AANayilvW"
-      >
-        Regisztrálj az eseményre
-      </a>
-
-      <ul
-        class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
-      >
-        {
-          assurances.map((item) => (
-            <li class="flex items-center gap-[8px]">
-              <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
-              {item}
-            </li>
-          ))
-        }
-      </ul>
+    <div class="mx-auto w-full max-w-[320px] overflow-hidden rounded-[20px] shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] md:max-w-none">
+      <Image
+        src={signupCover}
+        alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
+        widths={[320, 480, 640]}
+        sizes="(max-width: 767px) 320px, 45vw"
+        loading="eager"
+        decoding="async"
+        class="aspect-[4/3] h-full w-full object-cover object-top"
+      />
     </div>
   </div>
 </section>
