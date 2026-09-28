@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import signupCover from '../assets/signup-cover.webp';
+import heroImage from '../assets/hero.png';
 
 /*
   Submits straight to the public action of a saved Sequenzy form (id
@@ -105,27 +105,32 @@ const assurances = [
       </div>
     </div>
 
-    {/* The signup form itself is the page's one and only CTA — no popup needed. */}
-    <div
-      id="jelentkezes"
-      class="scroll-mt-[96px] w-full max-w-[440px] justify-self-center overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] md:justify-self-end"
-    >
-      {/* Above the fold: eager so it is not discovered late. */}
-      <Image
-        src={signupCover}
-        alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
-        widths={[440, 660, 880]}
-        sizes="(max-width: 768px) 88vw, 440px"
-        loading="eager"
-        decoding="async"
-        class="aspect-[4/3] w-full object-cover object-top"
-      />
+    {/* Right column: the original hero photo on top, the signup form — the page's
+        one and only CTA, no popup needed — stacked below it. */}
+    <div class="flex flex-col gap-[clamp(24px,3vw,36px)]">
+      <div class="relative aspect-4/5 w-4/5 justify-self-center md:justify-self-end">
+        {/* Above the fold: eager + high priority so it is not discovered late. */}
+        <Image
+          src={heroImage}
+          alt="Lili, a Lili Meseműhelye alapítója"
+          widths={[480, 720, 1080]}
+          sizes="(max-width: 768px) 74vw, 36vw"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
 
-      <form
-        id="signup-form"
-        class="flex flex-col gap-[14px] p-[clamp(20px,2.6vw,30px)]"
-        novalidate
+      <div
+        id="jelentkezes"
+        class="scroll-mt-[96px] w-full max-w-[440px] justify-self-center overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] md:justify-self-end"
       >
+        <form
+          id="signup-form"
+          class="flex flex-col gap-[14px] p-[clamp(20px,2.6vw,30px)]"
+          novalidate
+        >
         <label class="flex flex-col gap-[6px]">
           <span class="text-[14px] font-semibold">Keresztnév</span>
           <input
@@ -201,7 +206,8 @@ const assurances = [
             ))
           }
         </ul>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>
