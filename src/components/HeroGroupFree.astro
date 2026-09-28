@@ -25,23 +25,16 @@ const assurances = [
 ];
 ---
 
-{/* Desktop carries no vertical padding and no minimum height: the form card is the
-    tallest thing there, so it sets the section's height and its top and bottom edges
-    ARE the section's edges. Anything that forces the section taller reappears as dead
-    space above the content.
-
-    Mobile stacks copy-then-form, so a top inset sits above the copy rather than
-    above nothing — it reads as breathing room under the header, not as a gap. */}
 <section
-  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(32px,9vw,56px)] pb-[clamp(32px,9vw,56px)] font-body font-light text-slate md:pb-0"
+  class="bg-cream px-[4vw] py-[clamp(32px,9vw,56px)] font-body font-light text-slate"
   aria-label="Bemutatkozás"
 >
   <div
-    class="mx-auto grid w-full max-w-canvas items-center gap-[clamp(28px,4vw,72px)] md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+    class="mx-auto flex w-full max-w-canvas flex-col items-center gap-[clamp(28px,4vw,44px)]"
   >
-    {/* Centred while stacked, left-aligned once the two columns appear. */}
+    {/* Centred copy block above the form. */}
     <div
-      class="mx-auto flex max-w-[700px] flex-col items-center gap-[clamp(14px,2.2vh,24px)] text-center md:mx-0 md:items-start md:text-left"
+      class="mx-auto flex max-w-[700px] flex-col items-center gap-[clamp(14px,2.2vh,24px)] text-center"
     >
       <div
         class="flex items-center gap-2 rounded-pill bg-apricot/25 px-[16px] py-[8px] text-[13px] font-semibold tracking-[0.16px]"
@@ -66,7 +59,7 @@ const assurances = [
       </h1>
 
       <div
-        class="flex flex-wrap items-center gap-x-[22px] gap-y-[10px] text-[15px] font-semibold text-terracotta"
+        class="flex flex-wrap items-center justify-center gap-x-[22px] gap-y-[10px] text-[15px] font-semibold text-terracotta"
       >
         <div class="flex items-center gap-[9px]">
           <svg
@@ -105,48 +98,53 @@ const assurances = [
       </div>
     </div>
 
-    {/* The signup form itself is the page's one and only CTA — no popup needed. */}
+    {/* The signup form itself is the page's one and only CTA — no popup needed.
+        Row layout on desktop (fields+button on the left, cover image on the
+        right) so the card grows wide instead of tall; stacked on mobile with
+        the image on top. */}
     <div
       id="jelentkezes"
-      class="scroll-mt-[96px] w-full max-w-[440px] justify-self-center overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] md:justify-self-end"
+      class="scroll-mt-[96px] flex w-full max-w-[760px] flex-col overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] sm:flex-row-reverse sm:items-stretch"
     >
       {/* Above the fold: eager so it is not discovered late. */}
       <Image
         src={signupCover}
         alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
-        widths={[440, 660, 880]}
-        sizes="(max-width: 768px) 88vw, 440px"
+        widths={[320, 480, 640]}
+        sizes="(max-width: 639px) 100vw, 38vw"
         loading="eager"
         decoding="async"
-        class="aspect-[4/3] w-full object-cover object-top"
+        class="aspect-[4/3] w-full flex-none object-cover object-top sm:aspect-auto sm:h-full sm:w-[38%]"
       />
 
       <form
         id="signup-form"
-        class="flex flex-col gap-[14px] p-[clamp(20px,2.6vw,30px)]"
+        class="flex flex-1 flex-col gap-[14px] p-[clamp(20px,2.6vw,32px)]"
         novalidate
       >
-        <label class="flex flex-col gap-[6px]">
-          <span class="text-[14px] font-semibold">Keresztnév</span>
-          <input
-            type="text"
-            name="firstName"
-            autocomplete="given-name"
-            required
-            class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
-          />
-        </label>
+        <div class="flex flex-col gap-[14px] sm:flex-row">
+          <label class="flex flex-1 flex-col gap-[6px]">
+            <span class="text-[14px] font-semibold">Keresztnév</span>
+            <input
+              type="text"
+              name="firstName"
+              autocomplete="given-name"
+              required
+              class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
+            />
+          </label>
 
-        <label class="flex flex-col gap-[6px]">
-          <span class="text-[14px] font-semibold">Email cím</span>
-          <input
-            type="email"
-            name="email"
-            autocomplete="email"
-            required
-            class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
-          />
-        </label>
+          <label class="flex flex-1 flex-col gap-[6px]">
+            <span class="text-[14px] font-semibold">Email cím</span>
+            <input
+              type="email"
+              name="email"
+              autocomplete="email"
+              required
+              class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
+            />
+          </label>
+        </div>
 
         <label class="flex items-start gap-[10px]">
           <input
@@ -184,13 +182,13 @@ const assurances = [
 
         <button
           type="submit"
-          class="btn-apricot mt-[4px] cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+          class="btn-apricot mt-[4px] cursor-pointer self-start px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
         >
           Szeretném kipróbálni a mesék ősi hatását díjmentesen
         </button>
 
         <ul
-          class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
+          class="m-0 flex list-none flex-wrap gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
         >
           {
             assurances.map((item) => (
