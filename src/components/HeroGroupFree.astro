@@ -1,6 +1,22 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../assets/hero.png';
+import signupCover from '../assets/signup-cover.webp';
+
+/*
+  Submits straight to the public action of a saved Sequenzy form (id
+  i2zovcewi1j441g95bqmtpol, company "Lili Meseműhelye", list "2026/10/07").
+  That action URL is a client-safe capability — the list, tags and success
+  behavior are fixed server-side, so no API key belongs here.
+*/
+const SEQUENZY_FORM_ACTION_URL =
+  'https://api.sequenzy.com/api/v1/forms/i2zovcewi1j441g95bqmtpol';
+const SUCCESS_URL = 'https://lilimesemuhelye.hu/sikeres-csoportos-foglalas';
+
+const legalLinkClass =
+  'text-slate underline underline-offset-2 hover:text-terracotta';
+
+// The legal pages open in a new tab so an in-progress signup is not lost.
+const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
 
 const assurances = [
   '100% Online & Ingyenes',
@@ -9,15 +25,15 @@ const assurances = [
 ];
 ---
 
-{/* Desktop carries no vertical padding and no minimum height: the image cell is the
+{/* Desktop carries no vertical padding and no minimum height: the form card is the
     tallest thing there, so it sets the section's height and its top and bottom edges
     ARE the section's edges. Anything that forces the section taller reappears as dead
     space above the content.
 
-    Mobile stacks copy-then-image, so a top inset sits above the copy rather than
+    Mobile stacks copy-then-form, so a top inset sits above the copy rather than
     above nothing — it reads as breathing room under the header, not as a gap. */}
 <section
-  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(32px,9vw,56px)] pb-0 font-body font-light text-slate md:pt-0"
+  class="flex items-stretch bg-cream px-[4vw] pt-[clamp(32px,9vw,56px)] pb-[clamp(32px,9vw,56px)] font-body font-light text-slate md:pb-0"
   aria-label="Bemutatkozás"
 >
   <div
@@ -87,49 +103,147 @@ const assurances = [
           <span>YouTube</span>
         </div>
       </div>
+    </div>
 
-      <div class="flex flex-col items-center gap-[18px] md:items-start">
-        {/* Opens the shared SignupDialog rendered once by the page. */}
+    {/* The signup form itself is the page's one and only CTA — no popup needed. */}
+    <div
+      id="jelentkezes"
+      class="scroll-mt-[96px] w-full max-w-[440px] justify-self-center overflow-hidden rounded-[24px] border border-hairline-soft bg-cream shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)] md:justify-self-end"
+    >
+      {/* Above the fold: eager so it is not discovered late. */}
+      <Image
+        src={signupCover}
+        alt="Őszi Stessz & Túlterheltség — ingyenes online mesefoglalkozás felnőtt nőknek"
+        widths={[440, 660, 880]}
+        sizes="(max-width: 768px) 88vw, 440px"
+        loading="eager"
+        decoding="async"
+        class="aspect-[1061/1500] w-full object-cover"
+      />
+
+      <form
+        id="signup-form"
+        class="flex flex-col gap-[14px] p-[clamp(20px,2.6vw,30px)]"
+        novalidate
+      >
+        <label class="flex flex-col gap-[6px]">
+          <span class="text-[14px] font-semibold">Keresztnév</span>
+          <input
+            type="text"
+            name="firstName"
+            autocomplete="given-name"
+            required
+            class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
+          />
+        </label>
+
+        <label class="flex flex-col gap-[6px]">
+          <span class="text-[14px] font-semibold">Email cím</span>
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+            class="border border-hairline bg-cream px-[14px] py-[11px] text-[15px] text-slate outline-none focus:border-terracotta"
+          />
+        </label>
+
+        <label class="flex items-start gap-[10px]">
+          <input
+            type="checkbox"
+            name="customAttributes[consent]"
+            value="true"
+            required
+            class="mt-[3px] h-[16px] w-[16px] flex-none accent-terracotta"
+          />
+          <span class="text-[13px] leading-[1.55] opacity-85 text-pretty">
+            Elolvastam, megértettem és elfogadom az
+            <a href="/aszf" class={legalLinkClass} {...legalLinkAttrs}
+              >Általános Szerződési Feltételeket</a
+            >, az
+            <a href="/adatvedelem" class={legalLinkClass} {...legalLinkAttrs}
+              >Adatvédelmi Tájékoztatót</a
+            >, valamint a
+            <a href="/nyilatkozat" class={legalLinkClass} {...legalLinkAttrs}
+              >Felelősségkizáró és Egészségügyi Nyilatkozatot</a
+            >, és a bennük foglaltakat magamra nézve kötelező érvényűnek ismerem el.
+          </span>
+        </label>
+
+        {/* Honeypot: hidden from real visitors, so a filled-in value flags a bot. */}
+        <div aria-hidden="true" class="absolute -left-[9999px]">
+          <label>
+            Leave this field blank
+            <input name="website" type="text" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
+
+        <p id="signup-form-error" class="m-0 hidden text-[13px] text-terracotta" role="alert">
+          Hiba történt a jelentkezés elküldésekor. Kérlek, próbáld újra.
+        </p>
+
         <button
-          type="button"
-          data-signup-trigger
-          class="btn-apricot cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+          type="submit"
+          class="btn-apricot mt-[4px] cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
         >
           Szeretném kipróbálni a mesék ősi hatását díjmentesen
         </button>
 
         <ul
-          class="m-0 flex list-none flex-wrap justify-center gap-x-[22px] gap-y-[10px] p-0 text-[14px] leading-[1.4] tracking-[0.16px] opacity-85 md:justify-start"
+          class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
         >
           {
             assurances.map((item) => (
-              <li class="flex items-center gap-[9px]">
+              <li class="flex items-center gap-[8px]">
                 <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
                 {item}
               </li>
             ))
           }
         </ul>
-      </div>
-    </div>
-
-    {/* The cutout is transparent — no fill behind it, the page cream shows through.
-        The cell keeps the source's 4:5 ratio and carries no height cap, so the image
-        fills it edge to edge with nothing letterboxed. */}
-    <div
-      class="relative aspect-4/5 w-4/5 justify-self-center md:justify-self-end"
-    >
-      {/* Above the fold: eager + high priority so it is not discovered late. */}
-      <Image
-        src={heroImage}
-        alt="Lili, a Lili Meseműhelye alapítója"
-        widths={[480, 720, 1080]}
-        sizes="(max-width: 768px) 74vw, 36vw"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="absolute inset-0 h-full w-full object-cover"
-      />
+      </form>
     </div>
   </div>
 </section>
+
+<script define:vars={{ formActionUrl: SEQUENZY_FORM_ACTION_URL, successUrl: SUCCESS_URL }}>
+  const form = document.getElementById('signup-form');
+  const errorMessage = document.getElementById('signup-form-error');
+
+  if (form instanceof HTMLFormElement) {
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      errorMessage?.classList.add('hidden');
+      submitButton?.setAttribute('disabled', '');
+
+      try {
+        const response = await fetch(formActionUrl, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+          redirect: 'manual',
+        });
+
+        // A successful Sequenzy submission redirects to the form's configured
+        // redirectUrl; the browser reports that as an opaque redirect here.
+        const succeeded =
+          response.type === 'opaqueredirect' ||
+          (response.status >= 300 && response.status < 400) ||
+          response.ok;
+
+        if (!succeeded) throw new Error('submission failed');
+
+        form.reset();
+        window.location.assign(successUrl);
+      } catch {
+        errorMessage?.classList.remove('hidden');
+      } finally {
+        submitButton?.removeAttribute('disabled');
+      }
+    });
+  }
+</script>
