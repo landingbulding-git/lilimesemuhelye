@@ -3,10 +3,14 @@
   Rendered once per page. Every `[data-signup-trigger]` button on the page opens it.
   Built on the native <dialog> element — see PurchaseDialog.astro for why.
 
-  TODO: once the real Sequenzy account for Lili Meseműhelye is connected, submit
-  firstName/email to it here instead of just forwarding to the Cal.com booking page.
+  Submits straight to the public action of a saved Sequenzy form (id
+  i2zovcewi1j441g95bqmtpol, company "Lili Meseműhelye", list "2026/10/07").
+  That action URL is a client-safe capability — the list, tags and success
+  behavior are fixed server-side, so no API key belongs here.
 */
-import { BOOKING_URL } from '../data/site';
+const SEQUENZY_FORM_ACTION_URL =
+  'https://api.sequenzy.com/api/v1/forms/i2zovcewi1j441g95bqmtpol';
+const SUCCESS_URL = 'https://lilimesemuhelye.hu/sikeres-csoportos-foglalas';
 
 const legalLinkClass =
   'text-slate underline underline-offset-2 hover:text-terracotta';
@@ -80,7 +84,8 @@ const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
       <label class="flex items-start gap-[10px]">
         <input
           type="checkbox"
-          name="consent"
+          name="customAttributes[consent]"
+          value="true"
           required
           class="mt-[3px] h-[16px] w-[16px] flex-none accent-terracotta"
         />
@@ -98,9 +103,21 @@ const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
         </span>
       </label>
 
+      {/* Honeypot: hidden from real visitors, so a filled-in value flags a bot. */}
+      <div aria-hidden="true" class="absolute -left-[9999px]">
+        <label>
+          Leave this field blank
+          <input name="website" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      <p id="signup-form-error" class="m-0 hidden text-[13px] text-terracotta" role="alert">
+        Hiba történt a jelentkezés elküldésekor. Kérlek, próbáld újra.
+      </p>
+
       <button
         type="submit"
-        class="btn-apricot mt-[6px] cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+        class="btn-apricot mt-[6px] cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
       >
         Szeretném kipróbálni a mesék ősi hatását díjmentesen
       </button>
@@ -108,9 +125,10 @@ const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
   </div>
 </dialog>
 
-<script define:vars={{ bookingUrl: BOOKING_URL }}>
+<script define:vars={{ formActionUrl: SEQUENZY_FORM_ACTION_URL, successUrl: SUCCESS_URL }}>
   const dialog = document.getElementById('signup-dialog');
   const form = document.getElementById('signup-form');
+  const errorMessage = document.getElementById('signup-form-error');
 
   if (dialog instanceof HTMLDialogElement && form instanceof HTMLFormElement) {
     const triggers = document.querySelectorAll('[data-signup-trigger]');
@@ -134,14 +152,40 @@ const legalLinkAttrs = { target: '_blank', rel: 'noopener' };
       document.body.style.overflow = '';
     });
 
-    form.addEventListener('submit', (event) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
 
-      // TODO: send firstName/email to Sequenzy once the real account is wired up.
-      window.open(bookingUrl, '_blank', 'noopener,noreferrer');
-      dialog.close();
-      form.reset();
+      errorMessage?.classList.add('hidden');
+      submitButton?.setAttribute('disabled', '');
+
+      try {
+        const response = await fetch(formActionUrl, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+          redirect: 'manual',
+        });
+
+        // A successful Sequenzy submission redirects to the form's configured
+        // redirectUrl; the browser reports that as an opaque redirect here.
+        const succeeded =
+          response.type === 'opaqueredirect' ||
+          (response.status >= 300 && response.status < 400) ||
+          response.ok;
+
+        if (!succeeded) throw new Error('submission failed');
+
+        form.reset();
+        dialog.close();
+        window.location.assign(successUrl);
+      } catch {
+        errorMessage?.classList.remove('hidden');
+      } finally {
+        submitButton?.removeAttribute('disabled');
+      }
     });
   }
 </script>
