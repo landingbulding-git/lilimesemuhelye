@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroGroup from '../components/HeroGroup.astro';
+import TestimonialsGroup from '../components/TestimonialsGroup.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import Struggle from '../components/Struggle.astro';
+import ValueProps from '../components/ValueProps.astro';
+import ProcessGroup from '../components/ProcessGroup.astro';
+import Guarantees from '../components/Guarantees.astro';
+import Founder from '../components/Founder.astro';
+import Faq from '../components/Faq.astro';
+import FinalCtaGroup from '../components/FinalCtaGroup.astro';
+import Footer from '../components/Footer.astro';
+import { BOOKING_URL } from '../data/site';
+
+const title = 'Lili Meseműhelye — Exkluzív csoportos mesefoglalkozás';
+const description =
+  'Biztonságos, ítélkezésmentes online tér, ahol a mesék ősi szimbólumai segítenek feloldani az elakadásaidat. Csak 5 hely maradt a következő alkalomra.';
+
+const navCta = {
+  label: 'Jelentkezem a mesefoglalkozásra',
+  href: BOOKING_URL,
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <Header navLinks={[]} navCta={navCta} />
+  <main>
+    <HeroGroup />
+    <TestimonialsGroup />
+    <SectionDivider />
+    <Struggle />
+    <ValueProps />
+    <ProcessGroup />
+    <Guarantees />
+    <Founder />
+    <Faq />
+    <FinalCtaGroup />
+  </main>
+  <Footer />
+</BaseLayout>
