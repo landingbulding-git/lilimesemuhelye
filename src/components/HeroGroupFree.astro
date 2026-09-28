@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero.png';
-import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 
 const assurances = [
   '100% Online & Ingyenes',
@@ -80,13 +79,14 @@ const assurances = [
           <span>2026. Október 07. 10:00</span>
         </div>
 
-        <a
-          href={BOOKING_URL}
-          {...EXTERNAL_LINK_ATTRS}
-          class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+        {/* Opens the shared SignupDialog rendered once by the page. */}
+        <button
+          type="button"
+          data-signup-trigger
+          class="btn-apricot cursor-pointer px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
         >
           Szeretném kipróbálni a mesék ősi hatását díjmentesen
-        </a>
+        </button>
 
         <ul
           class="m-0 flex list-none flex-wrap justify-center gap-x-[22px] gap-y-[10px] p-0 text-[14px] leading-[1.4] tracking-[0.16px] opacity-85 md:justify-start"
