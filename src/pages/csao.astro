@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
+import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 
 const title = 'Lili Meseműhelye — Ingyenes mesefoglalkozás anyaotthonokban';
 const description =
@@ -8,6 +9,8 @@ const description =
 
 const BLOB = 'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/csao';
 const video = { src: `${BLOB}/testvideo.mp4`, poster: `${BLOB}/testvideo_poster.jpg` };
+
+const assurances = ['Teljesen ingyenes', 'Nem jár elköteleződéssel'];
 
 const questions = [
   'Mi az a mesefoglalkozás?',
@@ -36,6 +39,30 @@ const videoClass =
           controls
           playsinline
           preload="metadata"></video>
+        <div class="flex flex-col items-center gap-[14px]">
+          <a
+            href={BOOKING_URL}
+            {...EXTERNAL_LINK_ATTRS}
+            class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+          >
+            Beszélgessünk a lehetőségről
+          </a>
+          <p class="m-0 max-w-[44ch] text-[14px] leading-[1.5] tracking-[0.16px] opacity-85">
+            Egy online találkozón megismerjük egymást és beavatlak a részletekbe.
+          </p>
+          <ul
+            class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
+          >
+            {
+              assurances.map((item) => (
+                <li class="flex items-center gap-[8px]">
+                  <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     </section>
 
