@@ -80,7 +80,7 @@ const videoClass =
         <div class="flex flex-col border-t border-hairline">
           {
             questions.map(({ q, video }) => (
-              <details class="faq group border-b border-hairline">
+              <details name="faq" class="faq group border-b border-hairline">
                 <summary class="flex w-full cursor-pointer list-none items-baseline justify-between gap-6 py-[22px] text-left font-display text-[clamp(17px,1.5vw,22px)] leading-[1.3] font-normal transition-opacity duration-100 hover:opacity-70 [&::-webkit-details-marker]:hidden">
                   <span class="text-pretty">{q}</span>
                   <span aria-hidden="true" class="flex-none text-[20px] leading-none">
