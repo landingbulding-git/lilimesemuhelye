@@ -3,12 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CenterVideo from '../components/CenterVideo.astro';
 import HeroDoodles from '../components/HeroDoodles.astro';
 import Footer from '../components/Footer.astro';
-import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
+import { EXTERNAL_LINK_ATTRS } from '../data/site';
 
 const title = 'Lili Meseműhelye — Ingyenes mesefoglalkozás anyaotthonokban';
 const description =
   'Ingyenes mesefoglalkozás anyaotthonokban élő felnőtt nőknek.';
 
+const CTA_URL = 'https://cal.com/lili-mesemuhelye/beszelgetes-az-ingyenes-mesefoglalkozasrol';
 const BLOB = 'https://dtc0hpasupe3ji2k.public.blob.vercel-storage.com/csao';
 const v = (name: string) => ({ src: `${BLOB}/${name}.mp4`, poster: `${BLOB}/${name}_poster.webp` });
 const hero = v('udvozles');
@@ -67,7 +68,7 @@ const questions = [
 
         <div class="mt-[clamp(8px,1.5vw,16px)] flex flex-col items-center gap-[16px]">
           <a
-            href={BOOKING_URL}
+            href={CTA_URL}
             {...EXTERNAL_LINK_ATTRS}
             class="btn-apricot px-[34px] py-[16px] text-[clamp(16px,1.2vw,18px)] font-semibold"
           >
@@ -120,6 +121,15 @@ const questions = [
                 </summary>
                 <div class="px-[clamp(18px,2.4vw,30px)] pb-[clamp(18px,2.4vw,30px)]">
                   <CenterVideo src={video.src} poster={video.poster} preload="none" />
+                  <div class="mt-[clamp(18px,2.4vw,28px)] flex justify-center">
+                    <a
+                      href={CTA_URL}
+                      {...EXTERNAL_LINK_ATTRS}
+                      class="btn-apricot px-[30px] py-[14px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+                    >
+                      Beszélgessünk a lehetőségről
+                    </a>
+                  </div>
                 </div>
               </details>
             ))
