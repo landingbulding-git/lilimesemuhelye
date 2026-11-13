@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CenterVideo from '../components/CenterVideo.astro';
+import HeroDoodles from '../components/HeroDoodles.astro';
 import Footer from '../components/Footer.astro';
 import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 
@@ -25,8 +26,9 @@ const questions = [
 
 <BaseLayout title={title} description={description}>
   <main class="font-body font-light text-slate">
-    <section class="bg-cream px-[4vw] py-[clamp(40px,7vw,88px)]" aria-label="Bemutatkozás">
-      <div class="mx-auto flex w-full max-w-[912px] flex-col items-center gap-[clamp(24px,3.5vw,40px)] text-center">
+    <section class="relative bg-cream px-[4vw] py-[clamp(40px,7vw,88px)]" aria-label="Bemutatkozás">
+      <HeroDoodles />
+      <div class="relative mx-auto flex w-full max-w-[912px] flex-col items-center gap-[clamp(24px,3.5vw,40px)] text-center">
         <div class="flex flex-col items-center gap-[clamp(14px,1.8vw,20px)]">
           <svg
             width="132"
