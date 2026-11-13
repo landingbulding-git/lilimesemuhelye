@@ -25,32 +25,62 @@ const questions = [
 
 <BaseLayout title={title} description={description}>
   <main class="font-body font-light text-slate">
-    <section class="bg-cream px-[4vw] py-[clamp(32px,9vw,56px)]" aria-label="Bemutatkozás">
-      <div class="mx-auto flex w-full max-w-[900px] flex-col items-center gap-[clamp(24px,3.5vw,40px)] text-center">
-        <h1
-          class="m-0 max-w-[30ch] font-display text-[clamp(26px,2.9vw,40px)] leading-[1.18] font-normal tracking-[-0.01em] text-pretty"
-        >
-          Ingyenes mesefoglalkozás anyaotthonokban élő felnőtt nőknek
-        </h1>
-        <CenterVideo src={hero.src} poster={hero.poster} />
-        <div class="flex flex-col items-center gap-[14px]">
+    <section class="bg-cream px-[4vw] py-[clamp(40px,7vw,88px)]" aria-label="Bemutatkozás">
+      <div class="mx-auto flex w-full max-w-[760px] flex-col items-center gap-[clamp(24px,3.5vw,40px)] text-center">
+        <div class="flex flex-col items-center gap-[clamp(14px,1.8vw,20px)]">
+          <svg
+            width="132"
+            height="24"
+            viewBox="0 0 132 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            class="text-terracotta"
+          >
+            <path d="M2 12c7-9 15-9 22 0s15 9 22 0" />
+            <circle cx="66" cy="12" r="3.5" />
+            <path d="M86 12c7-9 15-9 22 0s15 9 22 0" />
+          </svg>
+          <h1
+            class="m-0 max-w-[24ch] font-display text-[clamp(30px,4vw,54px)] leading-[1.12] font-normal tracking-[-0.01em] text-pretty"
+          >
+            Ingyenes mesefoglalkozás anyaotthonokban élő felnőtt nőknek
+          </h1>
+        </div>
+
+        {/* Offset apricot card behind the video, same warm-layer trick as the other pages' image frames. */}
+        <div class="relative w-full">
+          <div
+            class="absolute inset-0 translate-x-[10px] translate-y-[12px] rotate-[1.2deg] rounded-[24px] bg-apricot md:translate-x-[16px] md:translate-y-[18px]"
+            aria-hidden="true"
+          >
+          </div>
+          <div class="relative">
+            <CenterVideo src={hero.src} poster={hero.poster} />
+          </div>
+        </div>
+
+        <div class="mt-[clamp(8px,1.5vw,16px)] flex flex-col items-center gap-[16px]">
           <a
             href={BOOKING_URL}
             {...EXTERNAL_LINK_ATTRS}
-            class="btn-apricot px-[30px] py-[15px] text-[clamp(15px,1.1vw,17px)] font-semibold"
+            class="btn-apricot px-[34px] py-[16px] text-[clamp(16px,1.2vw,18px)] font-semibold"
           >
             Beszélgessünk a lehetőségről
           </a>
-          <p class="m-0 max-w-[44ch] text-[14px] leading-[1.5] tracking-[0.16px] opacity-85">
+          <p class="m-0 max-w-[44ch] text-[15px] leading-[1.55] tracking-[0.16px] text-pretty">
             Egy online találkozón megismerjük egymást és beavatlak a részletekbe.
           </p>
           <ul
-            class="m-0 flex list-none flex-wrap justify-center gap-x-[18px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px] opacity-85"
+            class="m-0 flex list-none flex-wrap justify-center gap-x-[20px] gap-y-[8px] p-0 text-[13px] leading-[1.4] tracking-[0.16px]"
           >
             {
               assurances.map((item) => (
-                <li class="flex items-center gap-[8px]">
-                  <span class="block h-[5px] w-[5px] rounded-full bg-sage" />
+                <li class="flex items-center gap-[8px] rounded-pill bg-sage/30 px-[14px] py-[6px]">
+                  <span class="block h-[6px] w-[6px] rounded-full bg-terracotta" />
                   {item}
                 </li>
               ))
@@ -60,28 +90,33 @@ const questions = [
       </div>
     </section>
 
-    <section id="gyik" class="section bg-cream" aria-label="GYIK">
-      <div class="mx-auto flex max-w-[900px] flex-col gap-[clamp(28px,3.5vw,48px)]">
+    <section id="gyik" class="section bg-sage" aria-label="GYIK">
+      <div class="mx-auto flex max-w-[860px] flex-col gap-[clamp(28px,3.5vw,48px)]">
         <h2
-          class="m-0 mx-auto max-w-[40ch] text-center font-display text-[clamp(26px,2.9vw,40px)] leading-[1.16] font-normal text-pretty"
+          class="m-0 mx-auto max-w-[24ch] text-center font-display text-[clamp(28px,3.2vw,44px)] leading-[1.14] font-normal text-pretty"
         >
           Mit szeretnél tudni a foglalkozásról?
         </h2>
 
         {/* Native <details>: no JS island needed, and the video markup stays out
             of the way until opened (preload="none" so closed videos cost nothing). */}
-        <div class="flex flex-col border-t border-hairline">
+        <div class="flex flex-col gap-[14px]">
           {
             questions.map(({ q, video }) => (
-              <details name="faq" class="faq group border-b border-hairline">
-                <summary class="flex w-full cursor-pointer list-none items-baseline justify-between gap-6 py-[22px] text-left font-display text-[clamp(17px,1.5vw,22px)] leading-[1.3] font-normal transition-opacity duration-100 hover:opacity-70 [&::-webkit-details-marker]:hidden">
+              <details
+                name="faq"
+                class="faq group rounded-[20px] border border-hairline-soft bg-cream transition-shadow duration-150 open:shadow-[0_20px_45px_-20px_rgba(80,86,94,0.4)]"
+              >
+                <summary class="flex w-full cursor-pointer list-none items-center justify-between gap-6 px-[clamp(18px,2.4vw,30px)] py-[clamp(16px,2vw,24px)] text-left font-display text-[clamp(18px,1.6vw,23px)] leading-[1.3] font-normal [&::-webkit-details-marker]:hidden">
                   <span class="text-pretty">{q}</span>
-                  <span aria-hidden="true" class="flex-none text-[20px] leading-none">
-                    <span class="group-open:hidden">+</span>
-                    <span class="hidden group-open:inline">–</span>
+                  <span
+                    aria-hidden="true"
+                    class="flex h-[36px] w-[36px] flex-none items-center justify-center rounded-full bg-apricot text-[22px] leading-none text-ink transition-transform duration-150 group-open:rotate-45"
+                  >
+                    +
                   </span>
                 </summary>
-                <div class="pb-[26px]">
+                <div class="px-[clamp(18px,2.4vw,30px)] pb-[clamp(18px,2.4vw,30px)]">
                   <CenterVideo src={video.src} poster={video.poster} preload="none" />
                 </div>
               </details>
