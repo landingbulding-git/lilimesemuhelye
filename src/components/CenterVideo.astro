@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  poster: string;
+  preload?: 'none' | 'metadata';
+}
+const { src, poster, preload = 'metadata' } = Astro.props;
+---
+
+<div class="center-video group/v relative">
+  <video
+    class="block aspect-video w-full rounded-[20px] bg-slate/10 object-cover shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)]"
+    src={src}
+    poster={poster}
+    controls
+    playsinline
+    preload={preload}></video>
+  {/* Centered play/pause. Stays tappable while playing but fades out unless hovered/focused. */}
+  <button
+    type="button"
+    aria-label="Lejátszás"
+    class="center-video-btn absolute top-1/2 left-1/2 flex h-[64px] w-[64px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-0 bg-slate/70 text-cream transition-opacity duration-150 [.is-playing_&]:opacity-0 [.is-playing_&]:hover:opacity-100 [.is-playing_&]:focus-visible:opacity-100"
+  >
+    <svg class="icon-play" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+    <svg class="icon-pause hidden" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.center-video').forEach((box) => {
+    const video = box.querySelector('video')!;
+    const btn = box.querySelector('button')!;
+    const sync = () => {
+      const playing = !video.paused && !video.ended;
+      box.classList.toggle('is-playing', playing);
+      btn.setAttribute('aria-label', playing ? 'Szünet' : 'Lejátszás');
+      btn.querySelector('.icon-play')!.classList.toggle('hidden', playing);
+      btn.querySelector('.icon-pause')!.classList.toggle('hidden', !playing);
+    };
+    btn.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
+    ['play', 'pause', 'ended'].forEach((e) => video.addEventListener(e, sync));
+  });
+
+  // `toggle` doesn't bubble, so listen in the capture phase. Covers both a manual
+  // close and the exclusive-accordion auto-close.
+  document.addEventListener(
+    'toggle',
+    (e) => {
+      const d = e.target as HTMLDetailsElement;
+      if (d instanceof HTMLDetailsElement && !d.open) d.querySelectorAll('video').forEach((v) => v.pause());
+    },
+    true,
+  );
+</script>

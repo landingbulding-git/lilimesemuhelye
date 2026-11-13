@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CenterVideo from '../components/CenterVideo.astro';
 import Footer from '../components/Footer.astro';
 import { BOOKING_URL, EXTERNAL_LINK_ATTRS } from '../data/site';
 
@@ -20,8 +21,6 @@ const questions = [
   { q: 'Mennyibe kerül ez nekünk?', video: v('kampanymenet') },
 ];
 
-const videoClass =
-  'block aspect-video w-full rounded-[20px] bg-slate/10 object-cover shadow-[0_20px_45px_-15px_rgba(80,86,94,0.35)]';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -33,13 +32,7 @@ const videoClass =
         >
           Ingyenes mesefoglalkozás anyaotthonokban élő felnőtt nőknek
         </h1>
-        <video
-          class={videoClass}
-          src={hero.src}
-          poster={hero.poster}
-          controls
-          playsinline
-          preload="metadata"></video>
+        <CenterVideo src={hero.src} poster={hero.poster} />
         <div class="flex flex-col items-center gap-[14px]">
           <a
             href={BOOKING_URL}
@@ -89,14 +82,7 @@ const videoClass =
                   </span>
                 </summary>
                 <div class="pb-[26px]">
-                  <video
-                    class={videoClass}
-                    src={video.src}
-                    poster={video.poster}
-                    controls
-                    playsinline
-                    preload="none"
-                  />
+                  <CenterVideo src={video.src} poster={video.poster} preload="none" />
                 </div>
               </details>
             ))
